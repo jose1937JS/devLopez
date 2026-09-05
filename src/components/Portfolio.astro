@@ -1,0 +1,777 @@
+---
+// Portfolio.astro — Project showcase with 6-by-6 carousel and large centered detail modal
+import type { ImageMetadata } from 'astro';
+import Badge from './Badge.astro';
+import { proyectos } from '../data/projects';
+
+// Eagerly resolve all project images in src/assets/images (excluding icon font assets)
+const imageGlob = import.meta.glob<{ default: ImageMetadata }>([
+  '/src/assets/images/**/*.{jpeg,jpg,png,gif,webp,avif}',
+  '!/src/assets/images/phosphor-icons/**'
+], { eager: true });
+
+const processedProjects = proyectos.map((p, idx) => {
+  let logoUrl = '';
+  if (p.logoSrc) {
+    if (imageGlob[p.logoSrc]) {
+      logoUrl = imageGlob[p.logoSrc].default.src;
+    } else {
+      logoUrl = p.logoSrc;
+    }
+  }
+
+  const resolvedImages = (p.images || []).map((img) => {
+    if (imageGlob[img]) {
+      return imageGlob[img].default.src;
+    }
+    return img;
+  });
+
+  return {
+    ...p,
+    id: idx,
+    logoResolved: logoUrl,
+    imagesResolved: resolvedImages,
+  };
+});
+
+const projectsJson = JSON.stringify(processedProjects);
+---
+
+<section id="portfolio" class="relative py-24 lg:py-32 overflow-hidden">
+  <!-- Glow background -->
+  <div class="absolute bottom-0 left-1/2 w-[36rem] h-[36rem] rounded-full opacity-[0.05] blur-3xl -translate-x-1/2 translate-y-1/3 pointer-events-none" style="background: radial-gradient(circle, #ff6b26, #f59e0b);" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="reveal flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-12 bg-primary-500/40"></div>
+        <span class="text-xs font-semibold uppercase tracking-widest text-primary-500" data-es="Portafolio" data-en="Portfolio">Portafolio</span>
+        <div class="h-px w-12 bg-primary-500/40"></div>
+      </div>
+      <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+        <span data-es="Proyectos que hablan" data-en="Projects that speak">Proyectos que hablan</span>
+        <br />
+        <span class="text-gradient">
+          <span data-es="por sí solos" data-en="for themselves">por sí solos</span>
+        </span>
+      </h2>
+      <p class="reveal stagger-2 text-base-400 text-lg max-w-2xl mx-auto" data-es="Una selección de 25 aplicaciones móviles, plataformas web y sistemas de producción con alto rendimiento y diseño de impacto." data-en="A curated selection of 25 mobile apps, web platforms, and production systems with high performance and impactful design.">
+        Una selección de 25 aplicaciones móviles, plataformas web y sistemas de producción con alto rendimiento y diseño de impacto.
+      </p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="reveal stagger-3 flex flex-wrap justify-center gap-2 sm:gap-3 mb-12" id="portfolio-filters">
+      <button class="filter-btn active px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 glass border border-white/10 text-white" data-filter="all">
+        <span data-es="Todos" data-en="All">Todos</span>
+      </button>
+      <button class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 glass border border-white/10 text-base-400 hover:text-white" data-filter="mobile">
+        <span data-es="Apps Móviles" data-en="Mobile Apps">Apps Móviles</span>
+      </button>
+      <button class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 glass border border-white/10 text-base-400 hover:text-white" data-filter="fullstack">
+        <span data-es="Full Stack" data-en="Full Stack">Full Stack</span>
+      </button>
+      <button class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 glass border border-white/10 text-base-400 hover:text-white" data-filter="frontend">
+        <span data-es="Frontend" data-en="Frontend">Frontend</span>
+      </button>
+      <button class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 glass border border-white/10 text-base-400 hover:text-white" data-filter="backend">
+        <span data-es="Backend" data-en="Backend">Backend</span>
+      </button>
+    </div>
+
+    <!-- Projects Grid Container (Carousel Slide View: 6 items per page) -->
+    <div class="relative min-h-[500px]">
+      <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity duration-300">
+        {processedProjects.map((p) => (
+          <article
+            class="project-card spotlight-card glass rounded-2xl overflow-hidden border border-white/8 hover:border-primary-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary-500/10 flex flex-col h-full cursor-pointer group"
+            data-id={p.id}
+            data-category={p.category}
+          >
+            <!-- Card Header / Logo Preview -->
+            <div class="relative h-44 sm:h-48 bg-gradient-to-br from-base-800 to-base-950 flex items-center justify-center p-6 border-b border-white/5 overflow-hidden">
+              <!-- Glow behind logo -->
+              <div class="absolute inset-0 bg-radial from-primary-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+              {p.logoResolved ? (
+                <img
+                  src={p.logoResolved}
+                  alt={`${p.titleEs} logo`}
+                  class="max-h-20 max-w-[200px] object-contain transition-transform duration-500 group-hover:scale-105 filter drop-shadow-md relative z-10"
+                  loading="lazy"
+                />
+              ) : p.logoIcon ? (
+                <div class="relative z-10 flex items-center justify-center">
+                  <i class={`${p.logoIcon} transition-transform duration-500 group-hover:scale-110`}></i>
+                </div>
+              ) : (
+                <div class="relative z-10 flex items-center justify-center">
+                  <i class="ph ph-device-mobile-camera text-6xl text-primary-500 transition-transform duration-500 group-hover:scale-110"></i>
+                </div>
+              )}
+
+              <!-- Category badge top-left -->
+              <div class="absolute top-3 left-3 z-20">
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-black/60 backdrop-blur-md text-primary-400 border border-primary-500/20">
+                  {p.category.split(' ')[0]}
+                </span>
+              </div>
+
+              <!-- Gallery count badge top-right -->
+              {p.imagesResolved.length > 0 && (
+                <div class="absolute top-3 right-3 z-20">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/60 backdrop-blur-md text-base-200 border border-white/10">
+                    <i class="ph ph-images text-xs text-primary-400"></i>
+                    <span>{p.imagesResolved.length}</span>
+                  </span>
+                </div>
+              )}
+
+              <!-- Hover action overlay -->
+              <div class="absolute inset-0 bg-base-950/70 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                <button
+                  type="button"
+                  class="btn-open-modal px-4 py-2 rounded-xl bg-primary-500 hover:bg-primary-600 text-white text-xs font-bold shadow-lg shadow-primary-500/25 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2"
+                >
+                  <i class="ph ph-eye text-sm"></i>
+                  <span data-es="Ver Detalles" data-en="View Details">Ver Detalles</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <!-- Subtitle / Client -->
+                <p class="text-xs font-semibold text-primary-400/90 mb-1 tracking-wide uppercase" data-es={p.subtitleEs} data-en={p.subtitleEn}>
+                  {p.subtitleEs}
+                </p>
+
+                <!-- Title -->
+                <h3 class="font-bold text-white text-lg mb-2.5 leading-snug group-hover:text-primary-300 transition-colors" data-es={p.titleEs} data-en={p.titleEn}>
+                  {p.titleEs}
+                </h3>
+
+                <!-- Description (clamped) -->
+                <p class="text-sm text-base-400 leading-relaxed mb-4 line-clamp-3" data-es={p.descriptionEs} data-en={p.descriptionEn}>
+                  {p.descriptionEs}
+                </p>
+              </div>
+
+              <!-- Tech badges -->
+              <div>
+                <div class="flex flex-wrap gap-1.5 pt-3 border-t border-white/5">
+                  {p.badges.slice(0, 4).map((badge) => (
+                    <Badge type={badge.type} title={badge.title} />
+                  ))}
+                  {p.badges.length > 4 && (
+                    <span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-medium text-base-400 bg-white/5 border border-white/10">
+                      +{p.badges.length - 4}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Carousel Controls (Previous / Next / Dots / Counter) -->
+    <div class="reveal mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-white/5">
+      <!-- Slide Counter -->
+      <div class="text-sm font-medium text-base-400 order-2 sm:order-1">
+        <span data-es="Página" data-en="Page">Página </span>
+        <span id="carousel-current-page" class="font-bold text-white">1 </span>
+        <span data-es="de" data-en="of"> de </span>
+        <span id="carousel-total-pages" class="font-bold text-white">5</span>
+      </div>
+
+      <!-- Navigation Dots -->
+      <div id="carousel-dots" class="flex items-center gap-2 order-1 sm:order-2">
+        <!-- Generated dynamically in script -->
+      </div>
+
+      <!-- Previous / Next Buttons -->
+      <div class="flex items-center gap-3 order-3">
+        <button
+          id="carousel-prev-btn"
+          type="button"
+          aria-label="Proyectos anteriores"
+          class="inline-flex items-center justify-center w-11 h-11 rounded-xl glass glass-hover text-white transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary-500/50"
+        >
+          <i class="ph ph-caret-left text-xl"></i>
+        </button>
+        <button
+          id="carousel-next-btn"
+          type="button"
+          aria-label="Proyectos siguientes"
+          class="inline-flex items-center justify-center w-11 h-11 rounded-xl glass glass-hover text-white transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:border-primary-500/50"
+        >
+          <i class="ph ph-caret-right text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Large Centered Modal for Project Details & Gallery ─── -->
+<div
+  id="project-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 md:p-8 bg-black/85 backdrop-blur-md transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <div
+    class="relative w-full max-w-6xl max-h-[87vh] mt-20 bg-base-900 border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden text-white animate-modal-in"
+    id="modal-card"
+  >
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-base-950/60 flex-shrink-0">
+      <div class="flex items-center gap-3 min-w-0">
+        <span id="modal-category-badge" class="px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-primary-500/20 text-primary-400 border border-primary-500/30 flex-shrink-0">
+          Mobile
+        </span>
+        <div class="truncate">
+          <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white truncate">
+            Título del Proyecto
+          </h3>
+          <p id="modal-subtitle" class="text-xs sm:text-sm text-base-400 truncate">
+            Subtítulo / Cliente
+          </p>
+        </div>
+      </div>
+      <button
+        id="modal-close-btn"
+        type="button"
+        aria-label="Cerrar modal"
+        class="w-10 h-10 rounded-xl glass glass-hover flex items-center justify-center text-base-400 hover:text-white transition-colors ml-4 flex-shrink-0"
+      >
+        <i class="ph ph-x text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Modal Scrollable Content -->
+    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+      <!-- Gallery Container (shown if images exist) -->
+      <div id="modal-gallery-section" class="space-y-3">
+        <div class="relative bg-base-950/90 rounded-2xl overflow-hidden border border-white/8 flex items-center justify-center min-h-[300px] max-h-[54vh] group">
+          <!-- Main Image -->
+          <img
+            id="modal-active-img"
+            src=""
+            alt="Captura del proyecto"
+            class="w-auto h-auto max-h-[52vh] max-w-full object-contain rounded-lg transition-all duration-300 p-2"
+          />
+
+          <!-- Prev Button -->
+          <button
+            id="modal-img-prev"
+            type="button"
+            aria-label="Imagen anterior"
+            class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/70 hover:bg-primary-500 text-white flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110 border border-white/10"
+          >
+            <i class="ph ph-caret-left text-2xl"></i>
+          </button>
+
+          <!-- Next Button -->
+          <button
+            id="modal-img-next"
+            type="button"
+            aria-label="Imagen siguiente"
+            class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/70 hover:bg-primary-500 text-white flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110 border border-white/10"
+          >
+            <i class="ph ph-caret-right text-2xl"></i>
+          </button>
+
+          <!-- Image Counter -->
+          <div class="absolute bottom-3 right-3 z-10">
+            <span id="modal-img-counter" class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-black/80 backdrop-blur-md text-white border border-white/10">
+              1 / 1
+            </span>
+          </div>
+        </div>
+
+        <!-- Thumbnails Strip -->
+        <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto py-2 px-1 scrollbar-thin">
+          <!-- Generated dynamically -->
+        </div>
+      </div>
+
+      <!-- Details Section -->
+      <div class="space-y-4 pt-2">
+        <!-- Description -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary-400 mb-2" data-es="Descripción del Proyecto" data-en="Project Description">
+            Descripción del Proyecto
+          </h4>
+          <p id="modal-description" class="text-base sm:text-lg text-base-300 leading-relaxed">
+            Descripción completa del proyecto...
+          </p>
+        </div>
+
+        <!-- Technologies -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary-400 mb-2.5" data-es="Tecnologías & Herramientas" data-en="Technologies & Tools">
+            Tecnologías & Herramientas
+          </h4>
+          <div id="modal-badges-container" class="flex flex-wrap gap-2">
+            <!-- Badges populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="px-6 py-4 border-t border-white/10 bg-base-950/60 flex items-center justify-between flex-shrink-0">
+      <div id="modal-code-container">
+        <a
+          id="modal-code-link"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition-all duration-200 hover:scale-105 border border-white/10"
+        >
+          <i class="ph ph-github-logo text-lg"></i>
+          <span data-es="Ver Código Fuente" data-en="View Source Code">Ver Código Fuente</span>
+        </a>
+      </div>
+      <button
+        id="modal-close-bottom-btn"
+        type="button"
+        class="px-5 py-2.5 rounded-xl glass glass-hover text-base-300 hover:text-white text-sm font-medium transition-all duration-200"
+      >
+        <span data-es="Cerrar" data-en="Close">Cerrar</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Raw Project Data for Client-Side Interactivity -->
+<script id="projects-data" type="application/json" is:inline set:html={projectsJson}></script>
+
+<!-- Interactive Logic for Carousel & Modal -->
+<script is:inline>
+  (function () {
+    const rawData = document.getElementById('projects-data');
+    if (!rawData) return;
+
+    let projects = [];
+    try {
+      projects = JSON.parse(rawData.textContent || '[]');
+    } catch (e) {
+      console.error('Error parsing projects JSON', e);
+      return;
+    }
+
+    const techMap = {
+      javascript: { bg: '#ffe42c', text: '#000000' },
+      js: { bg: '#ffe42c', text: '#000000' },
+      bootstrapcss: { bg: '#8017f6', text: '#ffffff' },
+      bootstrap: { bg: '#8017f6', text: '#ffffff' },
+      boostrapcss: { bg: '#8017f6', text: '#ffffff' },
+      boostrap: { bg: '#8017f6', text: '#ffffff' },
+      jquery: { bg: '#79cff5', text: '#000000' },
+      vuetify: { bg: '#1967c0', text: '#ffffff' },
+      android: { bg: '#50b063', text: '#ffffff' },
+      firebase: { bg: '#ff9101', text: '#ffffff' },
+      vuejs: { bg: '#41d392', text: '#000000' },
+      vue: { bg: '#41d392', text: '#000000' },
+      reactjs: { bg: '#59c4dc', text: '#000000' },
+      react: { bg: '#59c4dc', text: '#000000' },
+      supabase: { bg: '#3ecf8e', text: '#000000' },
+      svelte: { bg: '#ff3e00', text: '#ffffff' },
+      sveltekit: { bg: '#ff3e00', text: '#ffffff' },
+      reactnative: { bg: '#097ea4', text: '#ffffff' },
+      reactquery: { bg: '#ff8904', text: '#ffffff' },
+      astro: { bg: '#5917a2', text: '#ffffff' },
+      typescript: { bg: '#2977c0', text: '#ffffff' },
+      nextjs: { bg: '#111118', text: '#ffffff' },
+      nodejs: { bg: '#339933', text: '#ffffff' },
+      expressjs: { bg: '#22222a', text: '#ffffff' },
+      mongodb: { bg: '#47a248', text: '#ffffff' },
+      postgresql: { bg: '#336791', text: '#ffffff' },
+      nestjs: { bg: '#ea284e', text: '#ffffff' },
+      php: { bg: '#474796', text: '#ffffff' },
+      laravel: { bg: '#ff2d20', text: '#ffffff' },
+      codeigniter: { bg: '#ee5322', text: '#ffffff' },
+      tailwindcss: { bg: '#06b6d4', text: '#0f172a' },
+      html: { bg: '#e34c26', text: '#ffffff' },
+      css: { bg: '#264de4', text: '#ffffff' },
+      mysql: { bg: '#4479a1', text: '#ffffff' },
+      vercel: { bg: '#000000', text: '#ffffff' },
+      ios: { bg: '#4479a1', text: '#ffffff' },
+      transbank: { bg: '#d5026c', text: '#ffffff' },
+      gluestack: { bg: '#e6e6e6', text: '#0f172a' },
+      nativewind: { bg: '#c1c1c1', text: '#0f172a' },
+      antigravity: { bg: '#3e96da', text: '#ffffff' },
+      stitch: { bg: '#fc9bc4', text: '#ffffff' },
+      expo: { bg: '#000020', text: '#ffffff' },
+    };
+
+    // ─── CAROUSEL STATE ───
+    const pageSize = 6;
+    let currentFilter = 'all';
+    let currentPage = 0;
+
+    const cards = Array.from(document.querySelectorAll('.project-card'));
+    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+    const prevBtn = document.getElementById('carousel-prev-btn');
+    const nextBtn = document.getElementById('carousel-next-btn');
+    const currentPageLabel = document.getElementById('carousel-current-page');
+    const totalPagesLabel = document.getElementById('carousel-total-pages');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const grid = document.getElementById('projects-grid');
+
+    function getVisibleCards() {
+      if (currentFilter === 'all') return cards;
+      return cards.filter((card) => {
+        const cat = card.getAttribute('data-category') || '';
+        return cat.split(' ').includes(currentFilter) || cat.includes(currentFilter);
+      });
+    }
+
+    function renderCarousel() {
+      const visibleCards = getVisibleCards();
+      const totalPages = Math.max(1, Math.ceil(visibleCards.length / pageSize));
+
+      if (currentPage >= totalPages) currentPage = totalPages - 1;
+      if (currentPage < 0) currentPage = 0;
+
+      const startIndex = currentPage * pageSize;
+      const endIndex = startIndex + pageSize;
+
+      // Animate grid switch
+      if (grid) {
+        grid.style.opacity = '0';
+        grid.style.transform = 'translateY(10px)';
+      }
+
+      setTimeout(() => {
+        cards.forEach((card) => {
+          card.style.display = 'none';
+        });
+
+        visibleCards.forEach((card, index) => {
+          if (index >= startIndex && index < endIndex) {
+            card.style.display = 'flex';
+          }
+        });
+
+        if (grid) {
+          grid.style.opacity = '1';
+          grid.style.transform = 'translateY(0)';
+        }
+      }, 150);
+
+      // Update counters
+      if (currentPageLabel) currentPageLabel.textContent = String(currentPage + 1);
+      if (totalPagesLabel) totalPagesLabel.textContent = String(totalPages);
+
+      // Update Prev / Next buttons
+      if (prevBtn) {
+        prevBtn.disabled = currentPage === 0;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentPage >= totalPages - 1;
+      }
+
+      // Render dots
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.setAttribute('aria-label', `Ir a la página ${i + 1}`);
+          dot.className =
+            i === currentPage
+              ? 'w-7 h-2.5 rounded-full bg-primary-500 shadow-sm shadow-primary-500/50 transition-all duration-300'
+              : 'w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-300';
+          dot.addEventListener('click', () => {
+            currentPage = i;
+            renderCarousel();
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+    }
+
+    // Filter Buttons
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', function () {
+        filterButtons.forEach((b) => {
+          b.classList.remove('active', 'text-white');
+          b.classList.add('text-base-400');
+        });
+        this.classList.add('active', 'text-white');
+        this.classList.remove('text-base-400');
+
+        currentFilter = this.getAttribute('data-filter') || 'all';
+        currentPage = 0;
+        renderCarousel();
+      });
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 0) {
+          currentPage--;
+          renderCarousel();
+        }
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const visibleCards = getVisibleCards();
+        const totalPages = Math.max(1, Math.ceil(visibleCards.length / pageSize));
+        if (currentPage < totalPages - 1) {
+          currentPage++;
+          renderCarousel();
+        }
+      });
+    }
+
+    // Touch swipe support on carousel
+    let touchStartX = 0;
+    let touchEndX = 0;
+    if (grid) {
+      grid.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      grid.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchEndX - touchStartX;
+        if (diff < -50 && nextBtn && !nextBtn.disabled) {
+          currentPage++;
+          renderCarousel();
+        } else if (diff > 50 && prevBtn && !prevBtn.disabled) {
+          currentPage--;
+          renderCarousel();
+        }
+      }, { passive: true });
+    }
+
+    // Initialize carousel
+    renderCarousel();
+
+    // ─── MODAL STATE & LOGIC ───
+    const modal = document.getElementById('project-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalSubtitle = document.getElementById('modal-subtitle');
+    const modalCategory = document.getElementById('modal-category-badge');
+    const modalDesc = document.getElementById('modal-description');
+    const modalBadgesContainer = document.getElementById('modal-badges-container');
+    const modalGallery = document.getElementById('modal-gallery-section');
+    const modalActiveImg = document.getElementById('modal-active-img');
+    const modalImgCounter = document.getElementById('modal-img-counter');
+    const modalImgPrev = document.getElementById('modal-img-prev');
+    const modalImgNext = document.getElementById('modal-img-next');
+    const modalThumbnails = document.getElementById('modal-thumbnails');
+    const modalCodeContainer = document.getElementById('modal-code-container');
+    const modalCodeLink = document.getElementById('modal-code-link');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalCloseBottomBtn = document.getElementById('modal-close-bottom-btn');
+
+    let currentProject = null;
+    let currentImageIndex = 0;
+
+    function openModal(project) {
+      currentProject = project;
+      currentImageIndex = 0;
+
+      const currentLang = document.documentElement.getAttribute('data-lang') || 'es';
+
+      // Text fields
+      if (modalTitle) modalTitle.textContent = currentLang === 'en' ? project.titleEn : project.titleEs;
+      if (modalSubtitle) modalSubtitle.textContent = currentLang === 'en' ? project.subtitleEn : project.subtitleEs;
+      if (modalCategory) modalCategory.textContent = project.category.toUpperCase();
+      if (modalDesc) modalDesc.textContent = currentLang === 'en' ? project.descriptionEn : project.descriptionEs;
+
+      // Badges
+      if (modalBadgesContainer) {
+        modalBadgesContainer.innerHTML = '';
+        (project.badges || []).forEach((b) => {
+          const norm = b.type.toLowerCase().replace(/[^a-z0-9]/g, '');
+          const match = techMap[norm];
+          const span = document.createElement('span');
+          span.className = 'px-3 py-1 rounded-md text-xs font-mono font-semibold shadow-sm inline-flex items-center';
+          if (match) {
+            span.style.backgroundColor = match.bg;
+            span.style.color = match.text;
+          } else {
+            span.className += ' bg-white/10 text-white border border-white/10';
+          }
+          span.textContent = b.title || b.type;
+          modalBadgesContainer.appendChild(span);
+        });
+      }
+
+      // Code URL
+      if (modalCodeContainer && modalCodeLink) {
+        if (project.codeUrl) {
+          modalCodeLink.href = project.codeUrl;
+          modalCodeContainer.style.display = 'block';
+        } else {
+          modalCodeContainer.style.display = 'none';
+        }
+      }
+
+      // Gallery Images
+      const images = project.imagesResolved || [];
+      if (modalGallery) {
+        if (images.length > 0) {
+          modalGallery.style.display = 'block';
+          renderGalleryImage(0);
+          renderThumbnails();
+        } else {
+          modalGallery.style.display = 'none';
+        }
+      }
+
+      // Show Modal
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+      currentProject = null;
+    }
+
+    function renderGalleryImage(index) {
+      if (!currentProject || !currentProject.imagesResolved) return;
+      const images = currentProject.imagesResolved;
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+      currentImageIndex = index;
+
+      if (modalActiveImg) {
+        modalActiveImg.src = images[index];
+        modalActiveImg.alt = `Captura ${index + 1} de ${currentProject.titleEs}`;
+      }
+
+      if (modalImgCounter) {
+        modalImgCounter.textContent = `${index + 1} / ${images.length}`;
+      }
+
+      // Update active thumbnail
+      if (modalThumbnails) {
+        const thumbBtns = modalThumbnails.querySelectorAll('button');
+        thumbBtns.forEach((btn, i) => {
+          if (i === index) {
+            btn.classList.add('ring-2', 'ring-primary-500', 'scale-105');
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } else {
+            btn.classList.remove('ring-2', 'ring-primary-500', 'scale-105');
+          }
+        });
+      }
+    }
+
+    function renderThumbnails() {
+      if (!modalThumbnails || !currentProject) return;
+      modalThumbnails.innerHTML = '';
+      const images = currentProject.imagesResolved || [];
+
+      images.forEach((imgSrc, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'w-14 h-14 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 transition-all duration-200 bg-base-950';
+        if (i === currentImageIndex) {
+          btn.classList.add('ring-2', 'ring-primary-500', 'scale-105');
+        }
+        btn.innerHTML = `<img src="${imgSrc}" alt="Miniatura ${i + 1}" class="w-full h-full object-cover" />`;
+        btn.addEventListener('click', () => {
+          renderGalleryImage(i);
+        });
+        modalThumbnails.appendChild(btn);
+      });
+    }
+
+    // Attach card click handlers
+    cards.forEach((card) => {
+      card.addEventListener('click', function (e) {
+        // Prevent if clicking on code external link
+        if (e.target.closest('a')) return;
+        const id = parseInt(this.getAttribute('data-id') || '0', 10);
+        const p = projects.find((item) => item.id === id);
+        if (p) openModal(p);
+      });
+    });
+
+    // Gallery Buttons
+    if (modalImgPrev) {
+      modalImgPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        renderGalleryImage(currentImageIndex - 1);
+      });
+    }
+
+    if (modalImgNext) {
+      modalImgNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        renderGalleryImage(currentImageIndex + 1);
+      });
+    }
+
+    // Close buttons
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (modalCloseBottomBtn) modalCloseBottomBtn.addEventListener('click', closeModal);
+
+    // Backdrop click
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') {
+          closeModal();
+        } else if (e.key === 'ArrowLeft') {
+          renderGalleryImage(currentImageIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          renderGalleryImage(currentImageIndex + 1);
+        }
+      }
+    });
+  })();
+</script>
+
+<style>
+  .filter-btn.active {
+    background: linear-gradient(135deg, #ff6b26, #f59e0b) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 107, 38, 0.4) !important;
+    box-shadow: 0 4px 20px rgba(255, 107, 38, 0.3);
+  }
+
+  @keyframes modalIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .animate-modal-in {
+    animation: modalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

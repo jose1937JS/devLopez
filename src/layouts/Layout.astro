@@ -1,23 +1,226 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'es' | 'en';
+  ogImage?: string;
+}
+
+const {
+  title = 'DevLopez — Agencia de Desarrollo de Software, Apps y Web',
+  description = 'Transformamos ideas en productos digitales de alto rendimiento. Desarrollo de software a medida, apps iOS/Android y sitios web optimizados para conversión.',
+  lang = 'es',
+  ogImage = '/images/hero.png',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://devlopez.dev').toString();
+---
+
+<!doctype html>
+<html lang={lang} class="dark" data-lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0a0c" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="DevLopez Studio" />
+    <meta name="keywords" content="desarrollo de software, apps móviles, iOS, Android, React Native, landing pages, Astro, Next.js, agencia digital" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:site_name" content="DevLopez" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Phosphor Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "DevLopez Studio",
+        "description": "Agencia de desarrollo de software, apps móviles y sitios web de alto rendimiento",
+        "url": "https://devlopez.dev",
+        "serviceType": ["Software Development", "Mobile App Development", "Web Development"],
+        "areaServed": "Worldwide"
+      }
+    </script>
+
+    <!-- ── Theme Init (prevents flash) ── -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+
+        const storedLang = localStorage.getItem('lang');
+        if (storedLang && storedLang !== document.documentElement.lang) {
+          document.documentElement.setAttribute('lang', storedLang);
+          document.documentElement.setAttribute('data-lang', storedLang);
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-base-900 dark:bg-base-900 min-h-screen antialiased">
+    <!-- Cursor spotlight -->
+    <div
+      id="cursor-glow"
+      class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+      style="background: radial-gradient(600px at 0px 0px, rgba(255,107,38,0.06), transparent 80%);"
+    ></div>
+
+    <!-- Floating Action Buttons (FAB) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-end">
+      <!-- AI Chat -->
+      <button
+        type="button"
+        aria-label="AI Chat"
+        class="w-12 h-12 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+      >
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        </svg>
+      </button>
+      
+      <!-- Email -->
+      <a
+        href="mailto:hola@devlopez.dev"
+        aria-label="Email"
+        class="w-12 h-12 rounded-full bg-primary-500 hover:bg-primary-400 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+      >
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
+
+      <!-- WhatsApp -->
+      <a
+        href="https://wa.me/15551234567"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
+        class="w-14 h-14 rounded-full bg-green-500 hover:bg-green-400 text-white flex items-center justify-center shadow-lg shadow-green-500/20 transition-transform hover:scale-110"
+      >
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+    </div>
+
+    <slot />
+
+    <!-- ── Global Scripts ── -->
+    <script is:inline>
+      // Cursor glow
+      const glow = document.getElementById('cursor-glow');
+      if (glow) {
+        document.addEventListener('mousemove', (e) => {
+          glow.style.background = `radial-gradient(600px at ${e.clientX}px ${e.clientY}px, rgba(255,107,38,0.07), transparent 80%)`;
+        });
+      }
+
+      // IntersectionObserver for .reveal and .section-img
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+      );
+
+      document.querySelectorAll('.reveal, .section-img').forEach((el) => observer.observe(el));
+
+      // Spotlight cards — track mouse per card
+      document.querySelectorAll('.spotlight-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
+      // Magnetic buttons
+      document.querySelectorAll('.btn-magnetic').forEach((btn) => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
+        });
+      });
+
+      // Counter animation
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.target, 10);
+        const duration = 1500;
+        const start = performance.now();
+        const update = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 4);
+          el.textContent = Math.round(ease * target) + (el.dataset.suffix || '');
+          if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+      }
+
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelectorAll('[data-target]').forEach((el) => counterObserver.observe(el));
+
+      // Language toggle
+      window.__setLang = function (lang) {
+        localStorage.setItem('lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('data-lang', lang);
+        document.querySelectorAll('[data-es]').forEach((el) => {
+          el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
+        });
+      };
+    </script>
+  </body>
+</html>

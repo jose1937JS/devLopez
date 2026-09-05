@@ -1,0 +1,116 @@
+---
+// About.astro — Quiénes Somos / Propuesta de Valor
+const metrics = [
+  { value: 50, suffix: '+', labelEs: 'Proyectos Entregados', labelEn: 'Projects Delivered', icon: '🚀' },
+  { value: 98, suffix: '%', labelEs: 'Satisfacción del Cliente', labelEn: 'Client Satisfaction', icon: '⭐' },
+  { value: 5, suffix: '+', labelEs: 'Años de Experiencia', labelEn: 'Years Experience', icon: '🏆' },
+  { value: 99, suffix: '%', labelEs: 'Uptime Promedio', labelEn: 'Average Uptime', icon: '⚡' },
+];
+
+const values = [
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    titleEs: 'Velocidad de Entrega',
+    titleEn: 'Delivery Speed',
+    descEs: 'Sprints de 2 semanas con demos en vivo. Tu MVP listo antes de que la competencia termine de planear.',
+    descEn: '2-week sprints with live demos. Your MVP ready before competitors finish planning.',
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`,
+    titleEs: 'Calidad de Código',
+    titleEn: 'Code Quality',
+    descEs: 'TypeScript estricto, tests automatizados, CI/CD y revisiones de código. Zero deuda técnica desde el día 1.',
+    descEn: 'Strict TypeScript, automated tests, CI/CD and code reviews. Zero technical debt from day 1.',
+  },
+  {
+    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`,
+    titleEs: 'Arquitectura Escalable',
+    titleEn: 'Scalable Architecture',
+    descEs: 'Diseñamos para crecer: microservicios, cloud-native, bases de datos optimizadas y monitoreo 24/7.',
+    descEn: 'Built to scale: microservices, cloud-native, optimized databases and 24/7 monitoring.',
+  },
+];
+---
+
+<section id="about" class="relative py-24 lg:py-32 overflow-hidden">
+  <!-- Background accent -->
+  <div
+    class="absolute top-0 left-0 w-96 h-96 rounded-full opacity-[0.04] blur-3xl -translate-x-1/2 -translate-y-1/2"
+    style="background: #ff6b26;"
+    aria-hidden="true"
+  ></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section label -->
+    <div class="reveal flex items-center gap-3 mb-4">
+      <div class="h-px flex-1 max-w-12 bg-primary-500/40"></div>
+      <span class="text-xs font-semibold uppercase tracking-widest text-primary-500" data-es="Quiénes Somos" data-en="Who We Are">Quiénes Somos</span>
+    </div>
+
+    <!-- Asymmetric grid layout -->
+    <div class="grid lg:grid-cols-[1fr_auto_1fr] gap-12 lg:gap-8 items-start">
+      <!-- Left: Headline + Values -->
+      <div class="flex flex-col gap-8">
+        <div>
+          <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl lg:text-5xl leading-tight text-white dark:text-white mb-4">
+            <span data-es="No somos una agencia más." data-en="We're not just another agency.">No somos una agencia más.</span>
+            <br />
+            <span class="text-gradient" style="background: linear-gradient(135deg, #ff6b26, #f59e0b); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+              <span data-es="Somos tu equipo técnico." data-en="We're your technical team.">Somos tu equipo técnico.</span>
+            </span>
+          </h2>
+          <p class="reveal stagger-2 text-base-300 text-lg leading-relaxed">
+            <span data-es="Fundados por ingenieros apasionados con experiencia en startups de alto crecimiento y empresas Fortune 500. Construimos productos digitales que importan, con la velocidad de una startup y la rigor de una enterprise." data-en="Founded by passionate engineers with experience at high-growth startups and Fortune 500 companies. We build digital products that matter, with startup speed and enterprise rigor.">
+              Fundados por ingenieros apasionados con experiencia en startups de alto crecimiento y empresas Fortune 500. Construimos productos digitales que importan, con la velocidad de una startup y la rigor de una enterprise.
+            </span>
+          </p>
+        </div>
+
+        <!-- Values -->
+        <div class="flex flex-col gap-4">
+          {values.map((v, i) => (
+            <div class={`reveal stagger-${i + 2} spotlight-card glass rounded-2xl p-5 flex gap-4 items-start transition-all duration-300 glass-hover`}>
+              <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center text-primary-400">
+                <Fragment set:html={v.icon} />
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1" data-es={v.titleEs} data-en={v.titleEn}>{v.titleEs}</h3>
+                <p class="text-sm text-base-400 leading-relaxed" data-es={v.descEs} data-en={v.descEn}>{v.descEs}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Center: Divider (desktop only) -->
+      <div class="hidden lg:block w-px bg-gradient-to-b from-transparent via-white/10 to-transparent self-stretch"></div>
+
+      <!-- Right: Metrics + Image -->
+      <div class="flex flex-col gap-8">
+        <!-- Section image -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-2xl blur-2xl opacity-15" style="background: radial-gradient(circle, #ff6b26, #f59e0b);" aria-hidden="true"></div>
+          <img
+            src="/images/about.jpg"
+            alt="About DevLopez"
+            class="section-img relative z-10 w-full rounded-2xl border border-white/5"
+            loading="lazy"
+          />
+        </div>
+        
+        <!-- Metrics grid -->
+        <div class="grid grid-cols-2 gap-4">
+          {metrics.map((m, i) => (
+            <div class={`reveal stagger-${i + 1} spotlight-card glass rounded-2xl p-5 text-center`}>
+              <div class="text-2xl mb-1">{m.icon}</div>
+              <div class="text-3xl font-black text-primary-400 mb-1">
+                <span data-target={m.value} data-suffix={m.suffix}>0{m.suffix}</span>
+              </div>
+              <div class="text-xs text-base-400 font-medium" data-es={m.labelEs} data-en={m.labelEn}>{m.labelEs}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

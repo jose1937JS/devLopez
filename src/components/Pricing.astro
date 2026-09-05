@@ -1,0 +1,211 @@
+---
+// Pricing.astro — 3 pricing tiers with feature lists and popular badge
+const plans = [
+  {
+    id: 'landing',
+    nameEs: 'Landing Express',
+    nameEn: 'Landing Express',
+    priceUSD: '$999',
+    periodEs: 'pago único',
+    periodEn: 'one-time',
+    descEs: 'Ideal para validar tu idea o producto con una landing page de alto impacto.',
+    descEn: 'Ideal for validating your idea or product with a high-impact landing page.',
+    color: 'border-white/8',
+    popular: false,
+    featuresEs: [
+      '1 página responsive completa',
+      'Diseño premium personalizado',
+      'SEO técnico y meta tags',
+      'Formulario de contacto integrado',
+      'Google Analytics + Meta Pixel',
+      'Core Web Vitals optimizados (Lighthouse 95+)',
+      'Integración con CMS (Sanity / Notion)',
+      'Entrega en 7-10 días hábiles',
+      '30 días de soporte post-lanzamiento',
+    ],
+    featuresEn: [
+      '1 complete responsive page',
+      'Premium custom design',
+      'Technical SEO & meta tags',
+      'Integrated contact form',
+      'Google Analytics + Meta Pixel',
+      'Optimized Core Web Vitals (Lighthouse 95+)',
+      'CMS integration (Sanity / Notion)',
+      '7-10 business days delivery',
+      '30 days post-launch support',
+    ],
+    ctaEs: 'Empezar Proyecto',
+    ctaEn: 'Start Project',
+    badge: null,
+  },
+  {
+    id: 'mvp',
+    nameEs: 'MVP / Web App',
+    nameEn: 'MVP / Web App',
+    priceUSD: '$4,500',
+    periodEs: 'precio base',
+    periodEn: 'starting price',
+    descEs: 'Tu producto completo en producción. Web app, API y panel de administración.',
+    descEn: 'Your full product in production. Web app, API and admin panel.',
+    color: 'border-primary-500/40',
+    popular: true,
+    featuresEs: [
+      'Todo lo del plan Landing Express',
+      'Web App completa (Next.js / Astro)',
+      'API RESTful o GraphQL personalizada',
+      'Base de datos PostgreSQL + Redis',
+      'Autenticación (OAuth2, Magic Link)',
+      'Panel de administración',
+      'Deploy en AWS/Vercel con CI/CD',
+      'Tests automatizados (unit + e2e)',
+      'Sprints de 2 semanas con demos',
+      '3 meses de soporte técnico',
+    ],
+    featuresEn: [
+      'Everything in Landing Express',
+      'Full Web App (Next.js / Astro)',
+      'Custom RESTful or GraphQL API',
+      'PostgreSQL + Redis database',
+      'Authentication (OAuth2, Magic Link)',
+      'Admin dashboard',
+      'Deploy on AWS/Vercel with CI/CD',
+      'Automated tests (unit + e2e)',
+      '2-week sprints with demos',
+      '3 months technical support',
+    ],
+    ctaEs: 'Cotizar Mi MVP',
+    ctaEn: 'Quote My MVP',
+    badge: '🔥 Más Popular',
+    badgeEn: '🔥 Most Popular',
+  },
+  {
+    id: 'enterprise',
+    nameEs: 'Solución Empresarial',
+    nameEn: 'Enterprise Solution',
+    priceUSD: '$12,000+',
+    periodEs: 'precio base',
+    periodEn: 'starting price',
+    descEs: 'Plataforma completa o app móvil nativa para empresas que necesitan escalar.',
+    descEn: 'Full platform or native mobile app for companies that need to scale.',
+    color: 'border-amber-DEFAULT/30',
+    popular: false,
+    featuresEs: [
+      'Todo lo del plan MVP',
+      'App móvil iOS + Android (React Native)',
+      'Arquitectura microservicios',
+      'Multi-tenancy y roles avanzados',
+      'Integración de pagos internacionales',
+      'Auditoría de seguridad y OWASP',
+      'Infraestructura multi-región en AWS',
+      'SLA 99.9% uptime garantizado',
+      'Gestor de proyecto dedicado',
+      '6 meses de soporte premium',
+      'Capacitación al equipo técnico',
+    ],
+    featuresEn: [
+      'Everything in MVP plan',
+      'iOS + Android mobile app (React Native)',
+      'Microservices architecture',
+      'Multi-tenancy and advanced roles',
+      'International payment integration',
+      'Security audit and OWASP',
+      'Multi-region AWS infrastructure',
+      'Guaranteed 99.9% uptime SLA',
+      'Dedicated project manager',
+      '6 months premium support',
+      'Technical team training',
+    ],
+    ctaEs: 'Agendar Consultoría',
+    ctaEn: 'Book a Consultation',
+    badge: null,
+  },
+];
+---
+
+<section id="pricing" class="relative py-24 lg:py-32 overflow-hidden">
+  <!-- BG -->
+  <div class="absolute top-0 left-1/2 w-[600px] h-64 rounded-full opacity-[0.04] blur-3xl -translate-x-1/2 -translate-y-1/2" style="background: linear-gradient(90deg, #ff6b26, #f59e0b);" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="reveal flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-12 bg-primary-500/40"></div>
+        <span class="text-xs font-semibold uppercase tracking-widest text-primary-500" data-es="Planes y Precios" data-en="Plans & Pricing">Planes y Precios</span>
+        <div class="h-px w-12 bg-primary-500/40"></div>
+      </div>
+      <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+        <span data-es="Inversión transparente," data-en="Transparent investment,">Inversión transparente,</span>
+        <br />
+        <span class="text-gradient" style="background: linear-gradient(135deg, #ff6b26, #f59e0b); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          <span data-es="resultados garantizados" data-en="guaranteed results">resultados garantizados</span>
+        </span>
+      </h2>
+      <p class="reveal stagger-2 text-base-400 text-lg max-w-xl mx-auto" data-es="Sin costos ocultos. Sin sorpresas. Todo incluido en el precio." data-en="No hidden costs. No surprises. Everything included in the price.">
+        Sin costos ocultos. Sin sorpresas. Todo incluido en el precio.
+      </p>
+    </div>
+
+    <!-- Section image -->
+    <!-- <div class="reveal flex justify-center mb-14">
+      <div class="relative max-w-xs">
+        <div class="absolute inset-0 rounded-2xl blur-2xl opacity-20" style="background: radial-gradient(circle, #f59e0b, #ff6b26);" aria-hidden="true"></div>
+        <img src="/images/pricing.jpg" alt="Pricing tiers illustration" class="section-img relative z-10 w-full rounded-2xl border border-white/5" loading="lazy" />
+      </div>
+    </div> -->
+
+    <!-- Pricing cards -->
+    <div class="grid lg:grid-cols-3 gap-6 lg:items-stretch">
+      {plans.map((plan, i) => (
+        <div class={`reveal stagger-${i + 1} spotlight-card relative glass rounded-3xl p-6 lg:p-8 flex flex-col border ${plan.color} transition-all duration-300 hover:-translate-y-1 ${plan.popular ? 'ring-1 ring-primary-500/50' : ''}`}>
+          <!-- Popular badge -->
+          {plan.popular && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary-500 text-white text-xs font-bold animate-pulse-glow whitespace-nowrap">
+              <span data-es={plan.badge} data-en={plan.badgeEn}>{plan.badge}</span>
+            </div>
+          )}
+
+          <!-- Plan header -->
+          <div class="mb-6">
+            <h3 class="font-bold text-white text-xl mb-1" data-es={plan.nameEs} data-en={plan.nameEn}>{plan.nameEs}</h3>
+            <p class="text-sm text-base-400 mb-4" data-es={plan.descEs} data-en={plan.descEn}>{plan.descEs}</p>
+            <div class="flex items-end gap-2">
+              <span class="text-4xl font-black text-white">{plan.priceUSD}</span>
+              <span class="text-sm text-base-400 mb-1.5" data-es={plan.periodEs} data-en={plan.periodEn}>{plan.periodEs}</span>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="h-px bg-white/8 mb-6"></div>
+
+          <!-- Features -->
+          <ul class="flex flex-col gap-2.5 flex-1 mb-8">
+            {plan.featuresEs.map((f, fi) => (
+              <li class="flex items-start gap-2.5 text-sm text-base-300">
+                <svg class="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span data-es={f} data-en={plan.featuresEn[fi]}>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- CTA -->
+          <a
+            href="#contact"
+            class={`btn-magnetic w-full text-center py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${plan.popular ? 'bg-primary-500 hover:bg-primary-400 text-white glow-primary-sm hover:glow-primary' : 'glass glass-hover text-white'}`}
+            data-es={plan.ctaEs}
+            data-en={plan.ctaEn}
+          >
+            {plan.ctaEs}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Note -->
+    <p class="reveal text-center text-sm text-base-400 mt-8" data-es="💬 ¿Tienes un proyecto especial? Hablemos — cada proyecto es único y ofrecemos soluciones personalizadas." data-en="💬 Have a special project? Let's talk — every project is unique and we offer custom solutions.">
+      💬 ¿Tienes un proyecto especial? Hablemos — cada proyecto es único y ofrecemos soluciones personalizadas.
+    </p>
+  </div>
+</section>

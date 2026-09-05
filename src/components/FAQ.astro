@@ -1,0 +1,105 @@
+---
+// FAQ.astro — Accessible accordion with smooth height animation
+const faqs = [
+  {
+    questionEs: '¿Cuánto tiempo tarda en entregar un proyecto?',
+    questionEn: 'How long does it take to deliver a project?',
+    answerEs: 'Los tiempos varían según la complejidad: una landing page entre 7-10 días hábiles, un MVP de web app entre 6-12 semanas, y una solución enterprise con app móvil entre 3-6 meses. Trabajamos en sprints de 2 semanas con demos en vivo para mantenerte siempre al tanto del progreso.',
+    answerEn: "Timelines vary by complexity: a landing page takes 7-10 business days, a web app MVP 6-12 weeks, and an enterprise solution with mobile app 3-6 months. We work in 2-week sprints with live demos to keep you always informed of progress.",
+  },
+  {
+    questionEs: '¿Qué métodos de pago aceptan?',
+    questionEn: 'What payment methods do you accept?',
+    answerEs: 'Aceptamos transferencias bancarias internacionales (SWIFT), PayPal, Wise, criptomonedas (USDT/USDC) y tarjetas de crédito vía Stripe. Para proyectos grandes trabajamos con estructura 40% inicio / 30% entrega parcial / 30% entrega final.',
+    answerEn: 'We accept international bank transfers (SWIFT), PayPal, Wise, cryptocurrencies (USDT/USDC) and credit cards via Stripe. For large projects we work with a 40% upfront / 30% partial delivery / 30% final delivery structure.',
+  },
+  {
+    questionEs: '¿Quién es propietario del código al finalizar?',
+    questionEn: 'Who owns the code upon completion?',
+    answerEs: '¡Tú! Al completar el pago final, transferimos la propiedad intelectual completa del código, diseños y activos digitales. Recibirás acceso completo al repositorio Git, credenciales de infraestructura y toda la documentación técnica.',
+    answerEn: "You do! Upon final payment, we transfer complete intellectual property of the code, designs and digital assets. You'll receive full access to the Git repository, infrastructure credentials and all technical documentation.",
+  },
+  {
+    questionEs: '¿Ofrecen soporte post-lanzamiento?',
+    questionEn: 'Do you offer post-launch support?',
+    answerEs: 'Sí. Cada plan incluye un período de soporte gratuito (30-90 días según el plan). Después ofrecemos contratos de mantenimiento mensual que incluyen actualizaciones de dependencias, monitoreo de uptime, backups automáticos, corrección de bugs y hasta 10 horas de desarrollo por mes.',
+    answerEn: 'Yes. Each plan includes a free support period (30-90 days depending on the plan). Afterwards we offer monthly maintenance contracts that include dependency updates, uptime monitoring, automatic backups, bug fixes and up to 10 hours of development per month.',
+  },
+  {
+    questionEs: '¿Cómo es el proceso de comunicación durante el proyecto?',
+    questionEn: 'How does communication work during the project?',
+    answerEs: 'Usamos Slack o WhatsApp para comunicación diaria, Linear para gestión de tareas, y demos en vivo cada 2 semanas vía Google Meet. Tendrás acceso en tiempo real al progreso del proyecto y un gestor de proyecto dedicado como punto de contacto.',
+    answerEn: 'We use Slack or WhatsApp for daily communication, Linear for task management, and live demos every 2 weeks via Google Meet. You have real-time access to project progress and a dedicated project manager as your point of contact.',
+  },
+  {
+    questionEs: '¿Pueden tomar proyectos existentes para mejorarlos?',
+    questionEn: 'Can you take on existing projects to improve them?',
+    answerEs: 'Absolutamente. Hacemos auditorías de código para evaluar el estado actual del proyecto, identificar deuda técnica y proponer un plan de mejora. Este servicio tiene costo adicional dependiendo de la complejidad del código existente.',
+    answerEn: 'Absolutely. We conduct code audits to evaluate the current state of the project, identify technical debt and propose an improvement plan. This service has an additional cost depending on the complexity of the existing code.',
+  },
+  {
+    questionEs: '¿Tienen experiencia con proyectos con regulaciones específicas (HIPAA, GDPR, PCI)?',
+    questionEn: 'Do you have experience with regulated projects (HIPAA, GDPR, PCI)?',
+    answerEs: 'Sí. Hemos desarrollado plataformas de telemedicina HIPAA-compliant, e-commerce PCI-DSS y aplicaciones que cumplen con GDPR para el mercado europeo. Implementamos auditorías de seguridad, encriptación en tránsito y en reposo, y documentación de compliance.',
+    answerEn: 'Yes. We have developed HIPAA-compliant telemedicine platforms, PCI-DSS e-commerce and GDPR-compliant applications for the European market. We implement security audits, encryption in transit and at rest, and compliance documentation.',
+  },
+];
+---
+
+<section id="faq" class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute left-0 top-1/2 w-64 h-64 rounded-full opacity-[0.04] blur-3xl -translate-y-1/2" style="background: #ff6b26;" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <div class="reveal flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-12 bg-primary-500/40"></div>
+        <span class="text-xs font-semibold uppercase tracking-widest text-primary-500" data-es="Preguntas Frecuentes" data-en="Frequently Asked Questions">Preguntas Frecuentes</span>
+        <div class="h-px w-12 bg-primary-500/40"></div>
+      </div>
+      <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl text-white mb-4">
+        <span data-es="Todas tus dudas," data-en="All your questions,">Todas tus dudas,</span>
+        <br />
+        <span class="text-gradient" style="background: linear-gradient(135deg, #ff6b26, #f59e0b); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          <span data-es="resueltas." data-en="answered.">resueltas.</span>
+        </span>
+      </h2>
+    </div>
+
+    <!-- Accordion -->
+    <div class="flex flex-col gap-3">
+      {faqs.map((faq, i) => (
+        <details
+          class={`reveal stagger-${(i % 3) + 1} group glass rounded-2xl border border-white/8 hover:border-white/14 transition-all duration-200 overflow-hidden`}
+        >
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer select-none">
+            <span class="font-semibold text-white text-sm sm:text-base pr-4" data-es={faq.questionEs} data-en={faq.questionEn}>{faq.questionEs}</span>
+            <!-- Plus/Minus icon -->
+            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-500/10 border border-primary-500/20 flex items-center justify-center transition-transform duration-300 group-open:rotate-45">
+              <svg class="w-4 h-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+            </div>
+          </summary>
+          <div class="faq-body px-6 pb-5">
+            <p class="text-base-400 text-sm leading-relaxed pt-1" data-es={faq.answerEs} data-en={faq.answerEn}>{faq.answerEs}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Still have questions? -->
+    <div class="reveal mt-12 text-center">
+      <p class="text-base-400 mb-4" data-es="¿Tienes una pregunta que no está aquí?" data-en="Have a question that's not here?">¿Tienes una pregunta que no está aquí?</p>
+      <a
+        href="#contact"
+        class="btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-500 hover:bg-primary-400 text-white font-semibold text-sm transition-all duration-200"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        <span data-es="Contáctanos directamente" data-en="Contact us directly">Contáctanos directamente</span>
+      </a>
+    </div>
+  </div>
+</section>
