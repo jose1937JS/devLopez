@@ -11,14 +11,17 @@ const services = [
     descEs: 'Desarrollamos APIs robustas, plataformas SaaS escalables y arquitecturas cloud diseñadas para manejar millones de usuarios.',
     descEn: 'We build robust APIs, scalable SaaS platforms and cloud architectures designed to handle millions of users.',
     features: [
-      { es: 'APIs RESTful & GraphQL', en: 'RESTful & GraphQL APIs' },
+      { es: 'APIs RESTful', en: 'RESTful APIs' },
       { es: 'Plataformas SaaS multi-tenant', en: 'Multi-tenant SaaS Platforms' },
       { es: 'Arquitecturas microservicios', en: 'Microservices Architecture' },
-      { es: 'Integración de pagos (Stripe, PayPal)', en: 'Payment Integration (Stripe, PayPal)' },
+      { es: 'Integración de pagos (Stripe, PayPal, etc)', en: 'Payment Integration (Stripe, PayPal, etc)' },
       { es: 'Sistemas de autenticación OAuth2/JWT', en: 'OAuth2/JWT Authentication' },
       { es: 'CI/CD y DevOps en AWS/GCP', en: 'CI/CD & DevOps on AWS/GCP' },
+      { es: 'Integración con IA (OpenAI, Claude, Gemini, etc)', en: 'AI Integration (OpenAI, Claude, Gemini, etc)' },
+      { es: 'Diseño UX/UI profesional', en: 'Professional UX/UI Design' }
+      
     ],
-    stack: ['Node.js', 'Python', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
+    stack: ['Node.js', 'Laravel', 'Nest.js', 'Express.js', 'PHP', 'PostgreSQL', 'Redis', 'AWS'],
     color: 'from-primary-500/20 to-primary-700/10',
     accent: 'border-primary-500/30',
   },
@@ -27,17 +30,18 @@ const services = [
     iconEs: 'Apps Móviles',
     iconEn: 'Mobile Apps',
     icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
-    titleEs: 'Apps Móviles iOS & Android',
-    titleEn: 'iOS & Android Mobile Apps',
-    descEs: 'Experiencias nativas e híbridas que los usuarios aman. React Native para cross-platform o nativo puro cuando el rendimiento es crítico.',
-    descEn: 'Native and hybrid experiences users love. React Native for cross-platform or pure native when performance is critical.',
+    titleEs: 'Apps Móviles Multiplataforma',
+    titleEn: 'Cross-platform Mobile Apps',
+    descEs: 'Experiencias multiplataforma con una sola base de código. Con React Native la construccion de apps se hacen en tiempo récord.',
+    descEn: 'Cross-platform experiences with a single codebase. With React Native, app development is done in record time.',
     features: [
       { es: 'React Native (iOS + Android)', en: 'React Native (iOS + Android)' },
-      { es: 'Swift / SwiftUI para iOS nativo', en: 'Swift / SwiftUI for native iOS' },
-      { es: 'Kotlin / Jetpack Compose para Android', en: 'Kotlin / Jetpack Compose for Android' },
       { es: 'Publicación en App Store & Play Store', en: 'App Store & Play Store publishing' },
       { es: 'Push notifications, offline-first', en: 'Push notifications, offline-first' },
       { es: 'Analytics & crash reporting', en: 'Analytics & crash reporting' },
+      { es: 'Integración con IA (OpenAI, Claude, Gemini, etc)', en: 'AI Integration (OpenAI, Claude, Gemini, etc)' },
+      { es: 'Diseño UX/UI profesional', en: 'Professional UX/UI Design' },
+      { es: 'Integración con Stripe, PayPal, etc', en: 'Integration with Stripe, PayPal, etc' },
     ],
     stack: ['React Native', 'Expo', 'Swift', 'Kotlin', 'Firebase', 'RevenueCat'],
     color: 'from-amber-DEFAULT/20 to-amber-DEFAULT/5',
@@ -55,12 +59,12 @@ const services = [
     features: [
       { es: 'Astro & Next.js App Router', en: 'Astro & Next.js App Router' },
       { es: 'Lighthouse 99+ en todas las métricas', en: 'Lighthouse 99+ on all metrics' },
-      { es: 'SEO técnico avanzado & Schema.org', en: 'Advanced technical SEO & Schema.org' },
-      { es: 'E-commerce con Shopify / WooCommerce', en: 'E-commerce with Shopify / WooCommerce' },
-      { es: 'CMS headless (Sanity, Contentful)', en: 'Headless CMS (Sanity, Contentful)' },
+      { es: 'SEO técnico avanzado con Indexación en Google', en: 'Advanced technical SEO with Google Indexation' },
+      { es: 'E-commerce personalizados', en: 'Custom E-commerce' },
       { es: 'Animaciones GSAP & microinteracciones', en: 'GSAP animations & micro-interactions' },
+      { es: 'Optimización de velocidad y rendimiento', en: 'Speed and Performance Optimization' },
     ],
-    stack: ['Astro', 'Next.js', 'TypeScript', 'Tailwind', 'Vercel', 'Sanity'],
+    stack: ['Astro', 'Next.js', 'TypeScript', 'Tailwind', 'Vercel', 'Cloudflare'],
     color: 'from-red-500/15 to-red-700/5',
     accent: 'border-red-500/30',
   },
@@ -86,8 +90,11 @@ const services = [
           <span data-es="a medida para tu negocio" data-en="tailored for your business">a medida para tu negocio</span>
         </span>
       </h2>
-      <p class="reveal stagger-2 text-base-400 text-lg max-w-2xl mx-auto" data-es="Desde una landing page que convierte hasta una plataforma SaaS completa, tenemos la experiencia para llevarlo al siguiente nivel." data-en="From a converting landing page to a full SaaS platform, we have the expertise to take it to the next level.">
-        Desde una landing page que convierte hasta una plataforma SaaS completa, tenemos la experiencia para llevarlo al siguiente nivel.
+      <p class="reveal stagger-2 text-base-400 text-lg max-w-2xl mx-auto"
+        data-es="Desde una landing page que convierte hasta una app móvil con su plataforma completa, tenemos los conocimientos para llevar tu idea al siguiente nivel."
+        data-en="From a converting landing page to a mobile app with its complete platform, we have the knowledge to take your idea to the next level."
+      >
+        Desde una landing page que convierte hasta una app móvil con su plataforma completa, tenemos los conocimientos para llevar tu idea al siguiente nivel.
       </p>
     </div>
 
@@ -129,6 +136,30 @@ const services = [
               <div>
                 <h3 class="font-black text-2xl lg:text-3xl text-white mb-3" data-es={s.titleEs} data-en={s.titleEn}>{s.titleEs}</h3>
                 <p class="text-base-300 mb-6 leading-relaxed" data-es={s.descEs} data-en={s.descEn}>{s.descEs}</p>
+                <a
+                  href="#contact"
+                  class="btn-magnetic inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-500 hover:bg-primary-400 text-white font-semibold text-sm transition-all duration-200 w-fit"
+                >
+                  <span data-es="Solicitar Cotización" data-en="Request a Quote">Solicitar Cotización</span>
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+                
+              </div>
+
+              <!-- Right: Stack + CTA -->
+              <div class="flex flex-col gap-6">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-base-400 mb-3" data-es="Conoce más de lo que puedo hacer y más" data-en="Know more about what I can do and more">Conoce más de lo que puedo hacer y más</p>
+                  {/* <div class="flex flex-wrap gap-2">
+                    {s.stack.map((tech) => (
+                      <span class="px-3 py-1 rounded-lg glass text-xs font-mono font-semibold text-base-200 border border-white/5">
+                        {tech}
+                      </span>
+                    ))}
+                  </div> */}
+                </div>
                 <!-- Features -->
                 <ul class="grid sm:grid-cols-2 gap-2">
                   {s.features.map((f) => (
@@ -140,28 +171,6 @@ const services = [
                     </li>
                   ))}
                 </ul>
-              </div>
-              <!-- Right: Stack + CTA -->
-              <div class="flex flex-col gap-6">
-                <div>
-                  <p class="text-xs font-semibold uppercase tracking-widest text-base-400 mb-3" data-es="Stack Tecnológico" data-en="Tech Stack">Stack Tecnológico</p>
-                  <div class="flex flex-wrap gap-2">
-                    {s.stack.map((tech) => (
-                      <span class="px-3 py-1 rounded-lg glass text-xs font-mono font-semibold text-base-200 border border-white/5">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <a
-                  href="#contact"
-                  class="btn-magnetic inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-500 hover:bg-primary-400 text-white font-semibold text-sm transition-all duration-200 w-fit"
-                >
-                  <span data-es="Solicitar Cotización" data-en="Request a Quote">Solicitar Cotización</span>
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
               </div>
             </div>
           </div>
