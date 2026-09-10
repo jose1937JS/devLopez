@@ -2,7 +2,7 @@
 // About.astro — Quiénes Somos / Propuesta de Valor
 const metrics = [
   { value: 24, suffix: '+', labelEs: 'Proyectos Construidos', labelEn: 'Projects Built', icon: '🚀' },
-  { value: 6, suffix: '+', labelEs: 'Años de Experiencia', labelEn: 'Years Experience', icon: '🏆' },
+  { value: 5, suffix: '+', labelEs: 'Años de Experiencia', labelEn: 'Years Experience', icon: '🏆' },
   // { value: 98, suffix: '%', labelEs: 'Satisfacción del Cliente', labelEn: 'Client Satisfaction', icon: '⭐' },
   // { value: 99, suffix: '%', labelEs: 'Uptime Promedio', labelEn: 'Average Uptime', icon: '⚡' },
 ];
@@ -12,22 +12,22 @@ const values = [
     icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
     titleEs: 'Velocidad de Entrega',
     titleEn: 'Delivery Speed',
-    descEs: 'Sprints de 4 semanas, dependiendo del proyecto, con demos en vivo. Productos creados en tiempo récord.',
+    descEs: 'Sprints de 4 semanas, con demos en vivo dependiendo del proyecto. Productos creados en tiempo récord.',
     descEn: '4-week sprints, depending on the project, with live demos. Products built in record time.',
   },
   {
     icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`,
     titleEs: 'Calidad de Código',
     titleEn: 'Code Quality',
-    descEs: 'TypeScript estricto, tests automatizados, CI/CD y revisiones de código. Zero deuda técnica desde el día 1.',
-    descEn: 'Strict TypeScript, automated tests, CI/CD and code reviews. Zero technical debt from day 1.',
+    descEs: 'Código limpio y mantenible, tipado estricto (TypeScript), tests automatizados y CI/CD. Reduciendo errores a largo plazo y mejorando la escalabilidad.',
+    descEn: 'Clean and maintainable code, strict typing (TypeScript), automated tests and CI/CD. Reducing errors in the long term and improving scalability.',
   },
   {
     icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`,
     titleEs: 'Arquitectura Escalable',
     titleEn: 'Scalable Architecture',
-    descEs: 'Diseño para crecer: microservicios, cloud-native, bases de datos optimizadas y monitoreo 24/7.',
-    descEn: 'Built to scale: microservices, cloud-native, optimized databases and 24/7 monitoring.',
+    descEs: 'Diseño para crecer: microservicios, cloud-native, bases de datos optimizadas, monitoreo de errores en tiempo real, integraciones con Inteligencia Artificial.',
+    descEn: 'Built to scale: microservices, cloud-native, optimized databases, real-time error monitoring, AI integrations.',
   },
 ];
 ---
@@ -53,18 +53,32 @@ const values = [
       <div class="flex flex-col gap-8">
         <div>
           <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl lg:text-5xl leading-tight text-white dark:text-white mb-4">
-            <span data-es="No soy una agencia más, no lidias con intermediarios." data-en="I'm not just another agency, you don't deal with intermediaries.">No soy una agencia más, no lidias con intermediarios</span>
-            <br />
+            <span
+              data-es="Hablas directamente con quien escribe el código."
+              data-en="You talk directly to the one who writes the code."
+            >
+              Hablas <span class="text-gradient">directamente</span> con quien escribe el código.</span
+            >
+            <!-- <br />
             <span class="text-gradient" style="background: linear-gradient(135deg, #ff6b26, #f59e0b); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
               <span data-es="Soy desarrollador full stack." data-en="I'm a full stack developer.">Soy un desarrollador Full Stack.</span>
-            </span>
+            </span> -->
           </h2>
           <p class="reveal stagger-2 text-base-300 text-lg leading-relaxed">
             <span
-              data-es="Con 6 años de experiencia profesional trabajando en empresas desde 2020. Este último año decidí ser libre y migrar a ser freelancer para construir desde cero y escalar productos de calidad con inteligencia artificial en tiempo récord."
-              data-en="With 6 years of professional experience working in companies since 2020. This last year I decided to become a freelancer to create from scratch and scale quality products with artificial intelligence in record time."
+              data-es="Soy desarrollador Full Stack con 5 años de experiencia construyendo software robusto para empresas. Trabajo de forma 100% independiente: sin intermediarios, sin burocracia y sin capas de gestión que dilatan las entregas."
+              data-en="I am a Full Stack developer with 5 years of experience building robust software for companies. I work 100% independently: no intermediaries, no bureaucracy, and no management layers that delay deliveries."
             >
-              Con 6 años de experiencia profesional trabajando en empresas desde 2020. Este último año decidí ser libre y migrar a ser freelancer para construir desde cero y escalar productos de calidad con inteligencia artificial en tiempo récord.
+              <b>Soy desarrollador Full Stack con 5 años de experiencia construyendo software robusto para empresas.</b> Trabajo de forma 100% independiente: sin intermediarios, sin burocracia y sin capas de gestión que dilatan las entregas.
+            </span>
+          </p>
+          <br />
+          <p class="reveal stagger-2 text-base-300 text-lg leading-relaxed">
+            <span
+              data-es="Combino arquitectura de software senior con flujos de Inteligencia Artificial para diseñar, construir y escalar productos digitales de alto rendimiento en una fracción del tiempo habitual."
+              data-en="I combine senior software architecture with Artificial Intelligence flows to design, build and scale high-performance digital products in a fraction of the usual time."
+            >
+              Combino arquitectura de software senior con flujos de Inteligencia Artificial para diseñar, construir y escalar productos digitales de alto rendimiento en una fracción del tiempo habitual.
             </span>
           </p>
         </div>

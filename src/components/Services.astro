@@ -6,22 +6,22 @@ const services = [
     iconEs: 'Software a Medida',
     iconEn: 'Custom Software',
     icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`,
-    titleEs: 'Software a Medida',
-    titleEn: 'Custom Software',
-    descEs: 'Desarrollamos APIs robustas, plataformas SaaS escalables y arquitecturas cloud diseñadas para manejar millones de usuarios.',
-    descEn: 'We build robust APIs, scalable SaaS platforms and cloud architectures designed to handle millions of users.',
+    titleEs: 'Software a Medida & Backend',
+    titleEn: 'Custom Software & Backend',
+    descEs: 'Diseño y construyo arquitecturas en la nube, plataformas SaaS y APIs de alto rendimiento preparadas para operar con estabilidad y alta concurrencia.',
+    descEn: 'I design and build cloud architectures, SaaS platforms, and high-performance APIs engineered for stability and high concurrency.',
     features: [
-      { es: 'APIs RESTful', en: 'RESTful APIs' },
-      { es: 'Plataformas SaaS multi-tenant', en: 'Multi-tenant SaaS Platforms' },
-      { es: 'Arquitecturas microservicios', en: 'Microservices Architecture' },
-      { es: 'Integración de pagos (Stripe, PayPal, etc)', en: 'Payment Integration (Stripe, PayPal, etc)' },
-      { es: 'Sistemas de autenticación OAuth2/JWT', en: 'OAuth2/JWT Authentication' },
-      { es: 'CI/CD y DevOps en AWS/GCP', en: 'CI/CD & DevOps on AWS/GCP' },
-      { es: 'Integración con IA (OpenAI, Claude, Gemini, etc)', en: 'AI Integration (OpenAI, Claude, Gemini, etc)' },
-      { es: 'Diseño UX/UI profesional', en: 'Professional UX/UI Design' }
-      
+      // { es: 'Arquitectura SaaS y multi-inquilino (Multi-tenant)', en: 'Multi-tenant SaaS Architecture' },
+      { es: 'Paneles de control internos y dashboards con métricas en tiempo real', en: 'Internal admin panels & real-time analytics dashboards' },
+      { es: 'Conexión bidireccional vía Webhooks con ERPs y herramientas de terceros', en: 'Two-way webhook integrations with ERPs & third-party software' },
+      { es: 'APIs RESTful y GraphQL estructuradas y seguras', en: 'Structured & Secure RESTful/GraphQL APIs' },
+      { es: 'Autenticación avanzada (OAuth2, JWT, RBAC)', en: 'Advanced Authentication (OAuth2, JWT, RBAC)' },
+      { es: 'Pasarelas de pago y suscripciones (Stripe, PayPal)', en: 'Payment Gateways & Subscriptions (Stripe, PayPal)' },
+      { es: 'Integración de modelos LLM e Inteligencia Artificial', en: 'LLM & Artificial Intelligence Integration' },
+      { es: 'Infraestructura Cloud, Docker y despliegue CI/CD', en: 'Cloud Infrastructure, Docker & CI/CD Pipelines' },
+      { es: 'Diseño de base de datos relacional y cache en memoria', en: 'Relational Database Design & In-Memory Caching' },
     ],
-    stack: ['Node.js', 'Laravel', 'Nest.js', 'Express.js', 'PHP', 'PostgreSQL', 'Redis', 'AWS'],
+    stack: ['Nest.js', 'Node.js', 'Laravel', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
     color: 'from-primary-500/20 to-primary-700/10',
     accent: 'border-primary-500/30',
   },
@@ -30,20 +30,21 @@ const services = [
     iconEs: 'Apps Móviles',
     iconEn: 'Mobile Apps',
     icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
-    titleEs: 'Apps Móviles Multiplataforma',
-    titleEn: 'Cross-platform Mobile Apps',
-    descEs: 'Experiencias multiplataforma con una sola base de código. Con React Native la construccion de apps se hacen en tiempo récord.',
-    descEn: 'Cross-platform experiences with a single codebase. With React Native, app development is done in record time.',
+    titleEs: 'Aplicaciones Móviles Multiplataforma',
+    titleEn: 'Cross-Platform Mobile Apps',
+    descEs: 'Desarrollo aplicaciones móviles para iOS y Android compartiendo una base de código única, logrando rendimiento nativo y tiempos de entrega reducidos.',
+    descEn: 'I build mobile applications for iOS and Android with a unified codebase, delivering native performance and accelerated release cycles.',
     features: [
-      { es: 'React Native (iOS + Android)', en: 'React Native (iOS + Android)' },
-      { es: 'Publicación en App Store & Play Store', en: 'App Store & Play Store publishing' },
-      { es: 'Push notifications, offline-first', en: 'Push notifications, offline-first' },
-      { es: 'Analytics & crash reporting', en: 'Analytics & crash reporting' },
-      { es: 'Integración con IA (OpenAI, Claude, Gemini, etc)', en: 'AI Integration (OpenAI, Claude, Gemini, etc)' },
-      { es: 'Diseño UX/UI profesional', en: 'Professional UX/UI Design' },
-      { es: 'Integración con Stripe, PayPal, etc', en: 'Integration with Stripe, PayPal, etc' },
+      { es: 'Código único para iOS y Android con rendimiento nativo', en: 'Single codebase for iOS & Android with native performance' },
+      { es: 'Publicación completa en App Store y Google Play', en: 'End-to-end App Store & Google Play Publishing' },
+      { es: 'Suscripciones y compras dentro de la app (In-App Purchases)', en: 'Subscriptions & In-App Purchases (RevenueCat / Stripe)' },
+      { es: 'Arquitectura offline-first y sincronización en tiempo real', en: 'Offline-first Architecture & Real-Time Sync' },
+      { es: 'Notificaciones push segmentadas y analítica de eventos', en: 'Segmented Push Notifications & Event Analytics' },
+      { es: 'Interfaces bajo estándares Human Interface y Material Design', en: 'UI built to Human Interface & Material Design Standards' },
+      { es: 'Monitoreo de estabilidad y reporte de errores en vivo', en: 'Real-time Crash Reporting & Stability Monitoring' },
+      { es: 'Seguridad OWASP Mobile Top 10', en: 'OWASP Mobile Top 10 Security' },
     ],
-    stack: ['React Native', 'Expo', 'Swift', 'Kotlin', 'Firebase', 'RevenueCat'],
+    stack: ['React Native', 'Expo', 'TypeScript', 'RevenueCat', 'Firebase', 'Supabase'],
     color: 'from-amber-DEFAULT/20 to-amber-DEFAULT/5',
     accent: 'border-amber-DEFAULT/30',
   },
@@ -54,21 +55,92 @@ const services = [
     icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>`,
     titleEs: 'Páginas Web & Landing Pages',
     titleEn: 'Web & Landing Pages',
-    descEs: 'Sitios ultra-rápidos con Astro y Next.js optimizados para Core Web Vitals, conversión y posicionamiento SEO.',
-    descEn: 'Ultra-fast sites with Astro and Next.js optimized for Core Web Vitals, conversion and SEO ranking.',
+    descEs: 'Sitios web ultra-optimizados, desarrollados para cargar de forma instantánea, posicionar en motores de búsqueda y maximizar la tasa de conversión.',
+    descEn: 'Ultra-optimized websites built for instant loading, top search engine visibility, and maximum conversion rates.',
     features: [
-      { es: 'Astro & Next.js App Router', en: 'Astro & Next.js App Router' },
-      { es: 'Lighthouse 99+ en todas las métricas', en: 'Lighthouse 99+ on all metrics' },
-      { es: 'SEO técnico avanzado con Indexación en Google', en: 'Advanced technical SEO with Google Indexation' },
-      { es: 'E-commerce personalizados', en: 'Custom E-commerce' },
-      { es: 'Animaciones GSAP & microinteracciones', en: 'GSAP animations & micro-interactions' },
-      { es: 'Optimización de velocidad y rendimiento', en: 'Speed and Performance Optimization' },
+      { es: 'Rendimiento Core Web Vitals y puntuación Lighthouse 95+', en: 'Core Web Vitals & Lighthouse 95+ Performance' },
+      { es: 'SEO técnico avanzado, OpenGraph y datos estructurados (Schema)', en: 'Advanced Technical SEO, OpenGraph & Structured Data (Schema)' },
+      { es: 'Diseño responsive enfocado en experiencia móvil (Mobile-First)', en: 'Mobile-First Responsive Design & Frictionless UX' },
+      { es: 'Animaciones fluidas con microinteracciones y scroll interactivo', en: 'Fluid Animations, Micro-interactions & Scroll Triggers' },
+      // { es: 'Integración con CRM, analítica de funnels y formularios dinámicos', en: 'CRM Integration, Funnel Analytics & Dynamic Forms' },
+      { es: 'Panel autoadministrable para editar textos, blogs y productos sin programar', en: 'Headless CMS setup to update text, blogs & products code-free' },
+      { es: 'Carga instantánea mediante arquitectura estática / SSR moderna', en: 'Instant Loading via Modern SSG / SSR Architecture' },
+      { es: 'Sitio multi-idioma con detección automática por país y URLs localizadas', en: 'Multi-language architecture with geo-detection & localized URLs' }
     ],
-    stack: ['Astro', 'Next.js', 'TypeScript', 'Tailwind', 'Vercel', 'Cloudflare'],
+    stack: ['Astro', 'Next.js', 'Tailwind CSS', 'TypeScript', 'GSAP', 'Vercel'],
     color: 'from-red-500/15 to-red-700/5',
     accent: 'border-red-500/30',
   },
 ];
+// const services = [
+//   {
+//     id: 'software',
+//     iconEs: 'Software a Medida',
+//     iconEn: 'Custom Software',
+//     icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`,
+//     titleEs: 'Software a Medida',
+//     titleEn: 'Custom Software',
+//     descEs: 'Desarrollamos APIs robustas, plataformas SaaS escalables y arquitecturas cloud diseñadas para manejar millones de usuarios.',
+//     descEn: 'We build robust APIs, scalable SaaS platforms and cloud architectures designed to handle millions of users.',
+//     features: [
+//       { es: 'APIs RESTful', en: 'RESTful APIs' },
+//       { es: 'Plataformas SaaS multi-tenant', en: 'Multi-tenant SaaS Platforms' },
+//       { es: 'Arquitecturas microservicios', en: 'Microservices Architecture' },
+//       { es: 'Integración de pagos (Stripe, PayPal, etc)', en: 'Payment Integration (Stripe, PayPal, etc)' },
+//       { es: 'Sistemas de autenticación OAuth2/JWT', en: 'OAuth2/JWT Authentication' },
+//       { es: 'CI/CD y DevOps en AWS/GCP', en: 'CI/CD & DevOps on AWS/GCP' },
+//       { es: 'Integración con IA (OpenAI, Claude, Gemini, etc)', en: 'AI Integration (OpenAI, Claude, Gemini, etc)' },
+//       { es: 'Diseño UX/UI profesional', en: 'Professional UX/UI Design' }
+      
+//     ],
+//     stack: ['Node.js', 'Laravel', 'Nest.js', 'Express.js', 'PHP', 'PostgreSQL', 'Redis', 'AWS'],
+//     color: 'from-primary-500/20 to-primary-700/10',
+//     accent: 'border-primary-500/30',
+//   },
+//   {
+//     id: 'mobile',
+//     iconEs: 'Apps Móviles',
+//     iconEn: 'Mobile Apps',
+//     icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
+//     titleEs: 'Apps Móviles Multiplataforma',
+//     titleEn: 'Cross-platform Mobile Apps',
+//     descEs: 'Experiencias multiplataforma con una sola base de código. Con React Native la construccion de apps se hacen en tiempo récord.',
+//     descEn: 'Cross-platform experiences with a single codebase. With React Native, app development is done in record time.',
+//     features: [
+//       { es: 'React Native (iOS + Android)', en: 'React Native (iOS + Android)' },
+//       { es: 'Publicación en App Store & Play Store', en: 'App Store & Play Store publishing' },
+//       { es: 'Push notifications, offline-first', en: 'Push notifications, offline-first' },
+//       { es: 'Analytics & crash reporting', en: 'Analytics & crash reporting' },
+//       { es: 'Integración con IA (OpenAI, Claude, Gemini, etc)', en: 'AI Integration (OpenAI, Claude, Gemini, etc)' },
+//       { es: 'Diseño UX/UI profesional', en: 'Professional UX/UI Design' },
+//       { es: 'Integración con Stripe, PayPal, etc', en: 'Integration with Stripe, PayPal, etc' },
+//     ],
+//     stack: ['React Native', 'Expo', 'Swift', 'Kotlin', 'Firebase', 'RevenueCat'],
+//     color: 'from-amber-DEFAULT/20 to-amber-DEFAULT/5',
+//     accent: 'border-amber-DEFAULT/30',
+//   },
+//   {
+//     id: 'web',
+//     iconEs: 'Web & Landing Pages',
+//     iconEn: 'Web & Landing Pages',
+//     icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>`,
+//     titleEs: 'Páginas Web & Landing Pages',
+//     titleEn: 'Web & Landing Pages',
+//     descEs: 'Sitios ultra-rápidos con Astro y Next.js optimizados para Core Web Vitals, conversión y posicionamiento SEO.',
+//     descEn: 'Ultra-fast sites with Astro and Next.js optimized for Core Web Vitals, conversion and SEO ranking.',
+//     features: [
+//       { es: 'Astro & Next.js App Router', en: 'Astro & Next.js App Router' },
+//       { es: 'Lighthouse 99+ en todas las métricas', en: 'Lighthouse 99+ on all metrics' },
+//       { es: 'SEO técnico avanzado con Indexación en Google', en: 'Advanced technical SEO with Google Indexation' },
+//       { es: 'E-commerce personalizados', en: 'Custom E-commerce' },
+//       { es: 'Animaciones GSAP & microinteracciones', en: 'GSAP animations & micro-interactions' },
+//       { es: 'Optimización de velocidad y rendimiento', en: 'Speed and Performance Optimization' },
+//     ],
+//     stack: ['Astro', 'Next.js', 'TypeScript', 'Tailwind', 'Vercel', 'Cloudflare'],
+//     color: 'from-red-500/15 to-red-700/5',
+//     accent: 'border-red-500/30',
+//   },
+// ];
 ---
 
 <section id="services" class="relative py-24 lg:py-32 overflow-hidden">
@@ -84,17 +156,17 @@ const services = [
         <div class="h-px w-12 bg-primary-500/40"></div>
       </div>
       <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-4 leading-tight">
-        <span data-es="Soluciones digitales" data-en="Digital solutions">Soluciones digitales</span>
+        <span data-es="Del concepto al código:" data-en="From concept to code:">Del concepto al código:</span>
         <br />
         <span class="text-gradient" style="background: linear-gradient(135deg, #ff6b26, #f59e0b); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">
-          <span data-es="a medida para tu negocio" data-en="tailored for your business">a medida para tu negocio</span>
+          <span data-es="Software diseñado para resolver y escalar." data-en="Software designed to solve and scale.">Software diseñado para <br /> resolver y escalar.</span>
         </span>
       </h2>
       <p class="reveal stagger-2 text-base-400 text-lg max-w-2xl mx-auto"
-        data-es="Desde una landing page que convierte hasta una app móvil con su plataforma completa, tenemos los conocimientos para llevar tu idea al siguiente nivel."
-        data-en="From a converting landing page to a mobile app with its complete platform, we have the knowledge to take your idea to the next level."
+        data-es="Construyo desde páginas de aterrizaje orientadas a captar clientes, hasta plataformas web y aplicaciones móviles complejas diseñadas para soportar el crecimiento de tu negocio."
+        data-en="I build everything from customer-facing landing pages to complex web platforms and mobile apps designed to scale with your business."
       >
-        Desde una landing page que convierte hasta una app móvil con su plataforma completa, tenemos los conocimientos para llevar tu idea al siguiente nivel.
+        Construyo desde páginas de aterrizaje orientadas a captar clientes, hasta plataformas web y aplicaciones móviles complejas diseñadas para soportar el crecimiento de tu negocio.
       </p>
     </div>
 
@@ -151,7 +223,13 @@ const services = [
               <!-- Right: Stack + CTA -->
               <div class="flex flex-col gap-6">
                 <div>
-                  <p class="text-xs font-semibold uppercase tracking-widest text-base-400 mb-3" data-es="Conoce más de lo que puedo hacer y más" data-en="Know more about what I can do and more">Conoce más de lo que puedo hacer y más</p>
+                  <p
+                    class="text-xs font-semibold uppercase tracking-widest text-base-400 mb-3"
+                    data-es="Conoce más de lo que puedo hacer"
+                    data-en="Know more about what I can do"
+                  >
+                    Conoce más de lo que puedo hacer
+                  </p>
                   {/* <div class="flex flex-wrap gap-2">
                     {s.stack.map((tech) => (
                       <span class="px-3 py-1 rounded-lg glass text-xs font-mono font-semibold text-base-200 border border-white/5">
