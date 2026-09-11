@@ -1,204 +1,410 @@
 ---
-// Pricing.astro — 3 pricing tiers with feature lists and popular badge
+import 'swiper/css';
+import 'swiper/css/free-mode';
+
+// Pricing.astro — 5 pricing tiers with launch promotions, strikethrough discounts, and popular badge
 const plans = [
   {
-    id: 'landing-profesional',
+    id: 'landing-professional',
     nameEs: 'Landing Page Profesional',
-    nameEn: 'Landing Page Profesional',
+    nameEn: 'Professional Landing Page',
     priceUSD: '$190',
+    originalPriceUSD: '$250',
     periodEs: 'pago en dos partes',
-    periodEn: 'two parts payment',
-    descEs: 'Ideal para tu negocio, captar nuevos clientes, promocionar tus productos o servicios y aumentar tu visibilidad online.',
-    descEn: 'Ideal for your business, attract new clients, promote your products or services and increase your online visibility.',
-    color: 'border-primary-500/40',
+    periodEn: 'two-part payment',
+    descEs: 'Estructura persuasiva de alta conversión orientada a captar clientes calificados, promocionar servicios y destacar.',
+    descEn: 'High-converting persuasive structure designed to acquire qualified leads, promote services, and stand out.',
+    color: 'border-primary-500/60 shadow-xl shadow-primary-500/10',
     popular: false,
     haveStartingPrice: true,
+    gridClass: 'lg:col-span-2 md:col-span-1',
     featuresEs: [
-      'Todo lo de Landing Express',
-      'Hasta 8 secciones de contenido',
-      'Indexación a Google para que encuentren tu página',
-      'Entrega de 5 a 7 días hábiles',
-      'Código fuente del proyecto',
-      'Formulario de contacto',
-      'Contenido multi idiomas',
+      'Todo lo incluido en Landing Express',
+      'Hasta 8 secciones de contenido persuasivo',
+      'Formulario interactivo para captura de prospectos',
+      'Indexación y verificación en Google Search Console',
+      'Arquitectura con soporte multi-idioma',
+      'Entrega garantizada de 5 a 7 días hábiles',
+      'Código fuente del proyecto 100% de tu propiedad',
     ],
     featuresEn: [
-      'Everything in Landing Express',
-      'Full Web App (Next.js / Astro)',
-      'Custom RESTful or GraphQL API',
-      'PostgreSQL + Redis database',
-      'Authentication (OAuth2, Magic Link)',
-      'Admin dashboard',
-      'Deploy on AWS/Vercel with CI/CD',
-      'Automated tests (unit + e2e)',
-      '2-week sprints with demos',
-      '3 months technical support',
+      'Everything included in Landing Express',
+      'Up to 8 high-converting content sections',
+      'Interactive contact and lead capture form',
+      'Google Search Console indexing and verification',
+      'Multi-language architecture support',
+      'Guaranteed delivery in 5 to 7 business days',
+      'Complete project source code with 100% ownership',
     ],
-    ctaEs: 'Cotizar Mi MVP',
-    ctaEn: 'Quote My MVP',
-    badge: '🔥 Más Popular',
-    badgeEn: '🔥 Most Popular',
+    ctaEs: 'Cotizar Proyecto',
+    ctaEn: 'Quote Project',
   },
   {
-    id: 'landing-personal',
+    id: 'landing-express',
     nameEs: 'Landing Page Express',
     nameEn: 'Landing Page Express',
     priceUSD: '$100',
+    originalPriceUSD: '$150',
     periodEs: 'precio único',
-    periodEn: 'one-time',
-    descEs: 'Ideal para validar tu idea o producto con una landing page de alto impacto.',
-    descEn: 'Ideal for validating your idea or product with a high-impact landing page.',
-    color: 'border-white/8',
+    periodEn: 'one-time payment',
+    descEs: 'Ideal para validar rápidamente tu idea, producto o negocio con una presencia digital moderna y de alto impacto.',
+    descEn: 'Ideal for quickly validating your idea, product, or business with a modern, high-impact digital presence.',
+    color: 'border-white/10 hover:border-primary-500/30',
     popular: true,
     haveStartingPrice: false,
+    gridClass: 'lg:col-span-2 md:col-span-1',
     featuresEs: [
-      '1 página adaptada a todos los dispositivos',
-      'Diseño personalizado a tu marca',
-      'SEO técnico y meta tags',
-      'Entrega de 3 a 5 días hábiles',
-      'Dominio registrado por 12 meses con SSL incluido',
-      'Botón de whatsapp flotante',
-      'Hasta 4 secciones de contenido'
+      '1 página responsive optimizada para móviles',
+      'Diseño personalizado y adaptado a tu marca',
+      'SEO técnico inicial y meta tags para buscadores',
+      'Botón flotante de WhatsApp para captar clientes',
+      'Dominio y hosting con certificado SSL (12 meses)',
+      'Entrega rápida de 3 a 5 días hábiles',
+      'Hasta 4 secciones estratégicas de contenido',
     ],
     featuresEn: [
-      '1 complete responsive page',
-      'Custom design based on your brand',
-      'Technical SEO & meta tags',
-      '3-5 business days delivery',
-      'Domain name for 12 months',
-      'Floating whatsapp button',
-      'Up to 4 content sections'
+      '1 responsive page optimized for all mobile devices',
+      'Custom design tailored to your brand identity',
+      'Technical SEO setup & meta tags for search engines',
+      'Floating WhatsApp button to capture inbound leads',
+      'Domain & hosting setup with SSL certificate (12 months)',
+      'Fast turnaround in 3 to 5 business days',
+      'Up to 4 strategic high-impact content sections',
     ],
     ctaEs: 'Empezar Proyecto',
     ctaEn: 'Start Project',
-    badge: null,
   },
   {
     id: 'web-site',
     nameEs: 'Sitio Web Completo',
-    nameEn: 'Complete Website',
-    priceUSD: '$490',
-    periodEs: '',
-    periodEn: '',
-    descEs: 'Plataforma web completa para empresas o personas con un producto o servicio que necesiten crecer construyendo autoridad y confianza a sus clientes.',
-    descEn: 'Full web platform for companies or people with a product or service that need to grow by building authority and trust with their clients.',
-    color: 'border-amber-DEFAULT/30',
+    nameEn: 'Complete Multi-Page Website',
+    priceUSD: '$390',
+    originalPriceUSD: '$500',
+    periodEs: 'pago en dos partes',
+    periodEn: 'two-part payment',
+    descEs: 'Plataforma web multipágina integral para empresas e instituciones que buscan consolidar autoridad y confianza comercial.',
+    descEn: 'Comprehensive multi-page website for businesses and companies looking to establish solid authority and commercial trust.',
+    color: 'border-amber-500/30 hover:border-amber-500/50',
     popular: false,
     haveStartingPrice: true,
+    gridClass: 'lg:col-span-2 md:col-span-1',
     featuresEs: [
       'Todo lo anterior incluido',
-      'Hasta 6 páginas individuales',
-      'Arquitectura Multiidioma mejorada',
-      'Aviso de Privacidad y Cookies Adaptables'
+      'Hasta 6 páginas individuales (Inicio, Servicios, Nosotros, etc.)',
+      'Arquitectura multi-idioma avanzada con selector',
+      'Optimización de rendimiento (Core Web Vitals 95+)',
+      'Páginas legales (Privacidad, Cookies y Términos)',
+      'Integración con blog o catálogo inicial',
+      '1 mes de soporte técnico y mantenimiento incluido',
     ],
     featuresEn: [
-      'Everything in MVP plan',
-      'iOS + Android mobile app (React Native)',
-      'Microservices architecture',
-      'Multi-tenancy and advanced roles',
-      'International payment integration',
-      'Security audit and OWASP',
-      'Multi-region AWS infrastructure',
-      'Guaranteed 99.9% uptime SLA',
-      'Dedicated project manager',
-      '6 months premium support',
-      'Technical team training',
+      'Everything in previous plans included',
+      'Up to 6 individual pages (Home, Services, About, etc.)',
+      'Advanced multi-language architecture with selector',
+      'Performance optimization (Core Web Vitals 95+)',
+      'Legal compliance pages (Privacy Policy, Terms, Cookies)',
+      'Integration with blog or initial catalog',
+      '1 month of dedicated technical support and maintenance',
     ],
-    ctaEs: 'Agendar Consultoría',
-    ctaEn: 'Book a Consultation',
-    badge: null,
+    ctaEs: 'Cotizar Proyecto',
+    ctaEn: 'Quote Project',
+  },
+  {
+    id: 'mobile-app',
+    nameEs: 'App Móvil Multiplataforma',
+    nameEn: 'Cross-Platform Mobile App',
+    priceUSD: '$790',
+    originalPriceUSD: '$1,190',
+    discountBadgeEs: '34% OFF',
+    discountBadgeEn: '34% OFF',
+    periodEs: 'pago en dos partes o por hitos',
+    periodEn: 'split or milestone payments',
+    descEs: 'Aplicación nativa para iOS y Android desarrollada con React Native y Expo. Código compartido, fluidez y alto rendimiento.',
+    descEn: 'Native mobile app for iOS and Android built with React Native and Expo. Shared codebase, smoothness, and top performance.',
+    color: 'border-cyan-500/40 hover:border-cyan-500/60',
+    popular: false,
+    haveStartingPrice: true,
+    gridClass: 'lg:col-span-3 md:col-span-1',
+    featuresEs: [
+      'Desarrollo multiplataforma para iOS y Android con React Native & Expo',
+      'Diseño UI/UX nativo, moderno y adaptado a móviles',
+      'Integración con APIs RESTful, GraphQL o Backend',
+      'Sistema de autenticación y gestión de perfiles de usuario',
+      'Notificaciones push y almacenamiento local offline',
+      'Configuración y preparación para App Store y Google Play',
+      'Código fuente 100% de tu propiedad y soporte técnico inicial',
+    ],
+    featuresEn: [
+      'Cross-platform development for iOS & Android with React Native & Expo',
+      'Native, modern UI/UX design tailored for mobile interactions',
+      'Integration with RESTful APIs, GraphQL, or Backend services',
+      'User authentication and profile management system',
+      'Push notifications and local offline data storage',
+      'App Store and Google Play store preparation and submission setup',
+      '100% source code ownership and initial technical support',
+    ],
+    ctaEs: 'Cotizar Proyecto',
+    ctaEn: 'Quote Project',
+  },
+  {
+    id: 'custom-system',
+    nameEs: 'Sistema Web Personalizado',
+    nameEn: 'Custom Web System',
+    priceUSD: null,
+    originalPriceUSD: null,
+    periodEs: 'presupuesto a medida según requerimientos',
+    periodEn: 'custom quote based on requirements',
+    descEs: '¿Tienes requerimientos especiales o un alcance personalizado? Desarrollo de software y sistemas a medida: paneles administrativos, plataformas SaaS, automatización de procesos y herramientas internas.',
+    descEn: 'Do you have special requirements or a custom scope? Tailored software and web systems: administrative dashboards, SaaS platforms, process automation, and internal tools.',
+    color: 'border-violet-500/40 hover:border-violet-500/60',
+    popular: false,
+    haveStartingPrice: false,
+    gridClass: 'lg:col-span-3 md:col-span-2',
+    featuresEs: [
+      'Arquitectura de software modular, escalable y adaptada a tu operación',
+      'Dashboard administrativo interactivo con métricas y reportes en tiempo real',
+      'Bases de datos optimizadas (PostgreSQL, MySQL o NoSQL)',
+      'Integración con pasarelas de pago (Stripe, PayPal) y APIs externas',
+      'Control de acceso basado en roles (RBAC) y seguridad estándar OWASP',
+      'Despliegue cloud (AWS, Vercel, Docker) con integración continua CI/CD',
+      'Acompañamiento técnico dedicado y garantía post-entrega',
+    ],
+    featuresEn: [
+      'Modular, scalable custom software architecture tailored to your operation',
+      'Interactive administrative dashboard with real-time metrics and reports',
+      'Optimized database layer (PostgreSQL, MySQL, or NoSQL)',
+      'Payment gateway integration (Stripe, PayPal) and external APIs',
+      'Role-Based Access Control (RBAC) and OWASP security standards',
+      'Cloud deployment (AWS, Vercel, Docker) with automated CI/CD',
+      'Dedicated technical consulting and post-delivery warranty',
+    ],
+    ctaEs: 'Conversar',
+    ctaEn: "Let's Talk",
   },
 ];
 ---
 
 <section id="pricing" class="relative py-24 lg:py-32 overflow-hidden">
-  <!-- BG -->
-  <div class="absolute top-0 left-1/2 w-[600px] h-64 rounded-full opacity-[0.04] blur-3xl -translate-x-1/2 -translate-y-1/2" style="background: linear-gradient(90deg, #ff6b26, #f59e0b);" aria-hidden="true"></div>
+  <!-- Ambient background glow -->
+  <div class="absolute top-0 left-1/2 w-[700px] h-72 rounded-full opacity-[0.05] blur-3xl -translate-x-1/2 -translate-y-1/2" style="background: linear-gradient(90deg, #ff6b26, #f59e0b);" aria-hidden="true"></div>
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-center mb-15">
+    <div class="text-center mb-16">
       <div class="reveal flex items-center gap-3 justify-center mb-4">
         <div class="h-px w-12 bg-primary-500/40"></div>
-        <span class="text-xs font-semibold uppercase tracking-widest text-primary-500" data-es="Servicios y Precios" data-en="Services & Pricing">Servicios y Precios</span>
+        <span class="inline-flex items-center text-xs font-bold uppercase tracking-widest text-primary-400">
+          <span data-es="Promociones de Lanzamiento" data-en="Launch Promotions">Promociones de Lanzamiento</span>
+        </span>
         <div class="h-px w-12 bg-primary-500/40"></div>
       </div>
-      <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
-        <span data-es="Inversión transparente," data-en="Transparent investment,">Inversión transparente,</span>
+      
+      <h2 class="reveal stagger-1 font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-4 tracking-tight">
+        <span data-es="Inversión clara y predecible, " data-en="Transparent, strategic investment,">Inversión clara y predecible, con</span>
         <br />
         <span class="text-gradient" style="background: linear-gradient(135deg, #ff6b26, #f59e0b); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-          <span data-es="resultados garantizados" data-en="guaranteed results">resultados garantizados</span>
+          <span data-es="condiciones preferenciales de lanzamiento." data-en="with special launch promotional rates">condiciones preferenciales <br /> de lanzamiento.</span>
         </span>
       </h2>
+
       <p
-        class="reveal stagger-2 text-base-400 text-lg max-w-xl mx-auto"
-        data-es="Sin costos ocultos. Sin sorpresas. Todo incluido en el precio. Lo puedes pagar en partes."
-        data-en="No hidden costs. No surprises. Everything included in the price. You can pay in parts.">
-        Sin costos ocultos. Sin sorpresas. Todo incluido en el precio. Lo puedes pagar en partes.
+        class="reveal stagger-2 text-base-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+        data-es="Desarrollo de software y productos digitales con alcance cerrado y plazos garantizados. Cada proyecto inicia con un anticipo de reserva; el saldo restante se distribuye en dos partes, por hitos aprobados o en cuotas mensuales, adaptándose a la escala y duración del desarrollo."
+        data-en="High-end software and digital product development with on-time delivery, clean code, and flexible split payments. All plans include special promotional discounts for our launch season.">
+        Desarrollo de software y productos digitales con alcance cerrado y plazos garantizados. Cada proyecto inicia con un anticipo de reserva; el saldo restante se distribuye en dos partes, por hitos aprobados o en cuotas mensuales, adaptándose a la escala y duración del desarrollo.
       </p>
+
+      <!-- Trust Badges -->
+      <div class="reveal stagger-3 flex flex-wrap justify-center items-center gap-4 sm:gap-8 mt-6 text-xs text-base-400">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span data-es="Descuentos por lanzamiento" data-en="Launch discounts applied">Descuentos por lanzamiento</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span data-es="Pago inicial y balance por hitos o mensualidades" data-en="Advance payment + milestone/monthly installments">Pago inicial y balance por hitos o mensualidades</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span data-es="Código fuente 100% de tu propiedad" data-en="100% Code ownership">Código fuente 100% de tu propiedad</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Section image -->
-    <!-- <div class="reveal flex justify-center mb-14">
-      <div class="relative max-w-xs">
-        <div class="absolute inset-0 rounded-2xl blur-2xl opacity-20" style="background: radial-gradient(circle, #f59e0b, #ff6b26);" aria-hidden="true"></div>
-        <img src="/images/pricing.jpg" alt="Pricing tiers illustration" class="section-img relative z-10 w-full rounded-2xl border border-white/5" loading="lazy" />
-      </div>
-    </div> -->
+    <!-- Pricing cards swiper carousel -->
+    <div class="swiper pricing-swiper !overflow-visible cursor-grab active:cursor-grabbing select-none">
+      <div class="swiper-wrapper items-stretch pt-6 pb-6">
+        {plans.map((plan, i) => (
+          <div class="swiper-slide !h-auto flex flex-col">
+            <div
+              class={`pricing-card spotlight-card relative glass rounded-3xl p-6 lg:p-8 flex flex-col h-full border ${plan.color} transition-all duration-300 hover:-translate-y-1.5 ${
+                plan.popular ? 'ring-2 ring-primary-500/70 shadow-2xl shadow-primary-500/20 z-10 scale-105' : 'hover:border-primary-500/30'
+              }`}
+            >
+              <!-- Popular badge (positioned to cleanly project above card without clipping) -->
+              {plan.popular && (
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 z-30 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary-500 via-orange-500 to-amber-500 text-white text-xs font-black shadow-lg shadow-primary-500/40 whitespace-nowrap flex items-center gap-1.5 border border-white/20 tracking-wider uppercase animate-pulse-glow">
+                  <span data-es='Más Popular' data-en='Most Popular'>Más Popular</span>
+                </div>
+              )}
 
-    <!-- Pricing cards -->
-    <div class="grid lg:grid-cols-3 gap-10 lg:items-stretch">
-      {plans.map((plan, i) => (
-        <div class={`reveal stagger-${i + 1} spotlight-card relative glass rounded-3xl p-6 lg:p-8 flex flex-col border ${plan.color} transition-all duration-300 hover:-translate-y-1 ${plan.popular ? 'ring-1 scale-110 ring-primary-500/50' : ''}`}>
-          <!-- Popular badge -->
-          {plan.popular && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary-500 text-white text-xs font-bold animate-pulse-glow whitespace-nowrap">
-              <span data-es={plan.badge} data-en={plan.badgeEn}>Mas popular</span>
-            </div>
-          )}
+              <!-- Plan header -->
+              <div class="mb-6">
+                <h3 class="font-bold text-white text-xl mb-1.5" data-es={plan.nameEs} data-en={plan.nameEn}>
+                  {plan.nameEs}
+                </h3>
+                <p class="text-sm text-base-400 mb-4 min-h-[42px] leading-relaxed" data-es={plan.descEs} data-en={plan.descEn}>
+                  {plan.descEs}
+                </p>
 
-          <!-- Plan header -->
-          <div class="mb-6">
-            <h3 class="font-bold text-white text-xl mb-1" data-es={plan.nameEs} data-en={plan.nameEn}>{plan.nameEs}</h3>
-            <p class="text-sm text-base-400 mb-4" data-es={plan.descEs} data-en={plan.descEn}>{plan.descEs}</p>
-            {plan.haveStartingPrice && <span class="text-sm text-primary-500">Desde</span>}
-            <div class="flex items-end gap-2 ">
-              <span class="text-4xl font-black text-white">{plan.priceUSD}</span>
-              <span class="text-sm text-base-400 mb-1.5" data-es={plan.periodEs} data-en={plan.periodEn}>{plan.periodEs}</span>
+                <!-- Price container -->
+                <div class="pt-2 border-t border-white/5">
+                  {plan.haveStartingPrice && (
+                    <span class="block text-xs font-bold uppercase tracking-wider text-primary-400 mb-1" data-es="Desde" data-en="Starting At">
+                      Desde
+                    </span>
+                  )}
+
+                  {!plan.haveStartingPrice && plan.priceUSD && (
+                    <span class="block text-xs font-bold uppercase tracking-wider text-primary-400 mb-1" data-es="Desde" data-en="Starting At">
+                      Precio Unico
+                    </span>
+                  )}
+
+                  {plan.priceUSD ? (
+                    <div class="flex items-baseline gap-2.5 flex-wrap">
+                      <span class="text-4xl lg:text-5xl font-black text-white tracking-tight">{plan.priceUSD}</span>
+                      {plan.originalPriceUSD && (
+                        <span class="text-lg lg:text-xl font-bold text-base-400 line-through decoration-primary-500 decoration-2">
+                          {plan.originalPriceUSD}
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div class="flex items-baseline gap-2.5 flex-wrap">
+                      <span class="text-3xl lg:text-4xl font-black text-white tracking-tight" data-es="A Medida" data-en="Custom">
+                        A Medida
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div class="h-px bg-white/8 mb-6"></div>
+
+              <!-- Features -->
+              <ul class="flex flex-col gap-2.5 flex-1 mb-8">
+                {plan.featuresEs.map((f, fi) => (
+                  <li class="flex items-start gap-2.5 text-sm text-base-300">
+                    <svg class="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span data-es={f} data-en={plan.featuresEn[fi]}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- CTA -->
+              <a
+                href="#contact"
+                class={`btn-magnetic w-full text-center py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all duration-200 ${
+                  plan.popular
+                    ? 'bg-primary-500 hover:bg-primary-400 text-white glow-primary-sm hover:glow-primary shadow-lg shadow-primary-500/25'
+                    : 'bg-white/5 hover:bg-primary-500 text-white hover:text-white border border-white/10 hover:border-primary-500 transition-all'
+                }`}
+                data-es={plan.ctaEs}
+                data-en={plan.ctaEn}
+              >
+                {plan.ctaEs}
+              </a>
             </div>
           </div>
-
-          <!-- Divider -->
-          <div class="h-px bg-white/8 mb-6"></div>
-
-          <!-- Features -->
-          <ul class="flex flex-col gap-2.5 flex-1 mb-8">
-            {plan.featuresEs.map((f, fi) => (
-              <li class="flex items-start gap-2.5 text-sm text-base-300">
-                <svg class="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-es={f} data-en={plan.featuresEn[fi]}>{f}</span>
-              </li>
-            ))}
-          </ul>
-
-          <!-- CTA -->
-          <a
-            href="#contact"
-            class={`btn-magnetic w-full text-center py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${plan.popular ? 'bg-primary-500 hover:bg-primary-400 text-white glow-primary-sm hover:glow-primary' : 'glass glass-hover text-white'}`}
-            data-es={plan.ctaEs}
-            data-en={plan.ctaEn}
-          >
-            {plan.ctaEs}
-          </a>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
 
     <!-- Note -->
-    <p class="reveal text-center text-sm text-base-400 mt-15" data-es="💬 ¿Tienes un proyecto especial? Hablemos — cada proyecto es único y ofrecemos soluciones personalizadas." data-en="💬 Have a special project? Let's talk — every project is unique and we offer custom solutions.">
-      💬 ¿Tienes un proyecto especial? Hablemos — cada proyecto es único y ofrecemos soluciones personalizadas.
+    <p
+      class="reveal text-center text-sm text-base-300 mt-12 max-w-2xl mx-auto animate-bounce-subtle "
+      data-es="Scrollea hacia la derecha para ver más planes →"
+      data-en="Scroll to the right to see more plans →"
+    >
+      Scrollea hacia la derecha para ver más planes →
     </p>
   </div>
 </section>
+
+<style>
+  .pricing-swiper {
+    overflow: visible !important;
+  }
+  .pricing-swiper :global(.swiper-wrapper) {
+    display: flex;
+    align-items: stretch;
+  }
+  .pricing-swiper :global(.swiper-slide) {
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 25rem !important;
+    max-width: 85vw !important;
+  }
+  .pricing-card {
+    overflow: visible !important;
+  }
+  .pricing-card::before {
+    border-radius: 1.5rem;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { FreeMode, Mousewheel } from 'swiper/modules';
+
+  function initPricingSwiper() {
+    const el = document.querySelector<HTMLElement>('.pricing-swiper');
+    if (!el || el.dataset.swiperInitialized === 'true') return;
+
+    new Swiper('.pricing-swiper', {
+      modules: [FreeMode, Mousewheel],
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      freeMode: {
+        enabled: true,
+        sticky: false,
+        momentum: true,
+        momentumBounce: true,
+      },
+      mousewheel: {
+        forceToAxis: true,
+        releaseOnEdges: true,
+      },
+      grabCursor: true,
+      breakpoints: {
+        768: {
+          spaceBetween: 24,
+        },
+        1024: {
+          spaceBetween: 30,
+        },
+      },
+    });
+
+    el.dataset.swiperInitialized = 'true';
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPricingSwiper);
+  } else {
+    initPricingSwiper();
+  }
+  document.addEventListener('astro:page-load', initPricingSwiper);
+</script>

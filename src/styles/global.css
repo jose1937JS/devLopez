@@ -31,6 +31,9 @@
   --color-amber-DEFAULT: #f59e0b;
   --color-amber-glow: #fbbf24;
 
+  /* Container */
+  --container-8xl: 90rem;
+
   /* Fonts */
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -171,6 +174,10 @@ html:not(.dark) .glass {
 
 .glow-primary-sm {
   box-shadow: 0 0 12px rgba(255, 107, 38, 0.25);
+}
+
+.max-w-8xl {
+  max-width: 90rem;
 }
 
 /* ─── Spotlight Card ─────────────────────────────────── */
