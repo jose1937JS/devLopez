@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Términos de Uso — DevLopez Studio"
+  description="Términos y condiciones de uso y contratación de servicios de desarrollo de software, apps y diseño web con DevLopez Studio."
+>
+  <Navbar />
+
+  <main class="relative z-20 bg-[#f8f9fa] dark:bg-base-900 min-h-screen pt-32 pb-24 shadow-2xl transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Back button -->
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 text-sm font-semibold text-primary-500 hover:text-primary-400 transition-colors mb-8 group"
+    >
+      <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      <span data-es="Volver al inicio" data-en="Back to home">Volver al inicio</span>
+    </a>
+
+    <!-- Header -->
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold mb-4">
+        <span data-es="Condiciones del Servicio" data-en="Terms of Service">Condiciones del Servicio</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4" data-es="Términos de Uso" data-en="Terms of Use">
+        Términos de Uso
+      </h1>
+      <p class="text-base-300 text-base sm:text-lg" data-es="Última actualización: Septiembre 2026. Conoce las directrices y condiciones que rigen el uso de este sitio web y la contratación de nuestros servicios." data-en="Last updated: September 2026. Review the guidelines and conditions governing the use of this website and the contracting of our services.">
+        Última actualización: Septiembre 2026. Conoce las directrices y condiciones que rigen el uso de este sitio web y la contratación de nuestros servicios.
+      </p>
+    </div>
+
+    <!-- Content Card -->
+    <div class="glass rounded-3xl p-6 sm:p-10 border border-black/5 dark:border-white/10 flex flex-col gap-8 text-base-300 leading-relaxed text-sm sm:text-base">
+      <!-- Section 1 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="1. Aceptación y Alcance" data-en="1. Acceptance and Scope">
+          1. Aceptación y Alcance
+        </h3>
+        <p data-es="El acceso y uso de este sitio web, así como la solicitud de propuestas o cotizaciones a través de nuestros formularios o canales de comunicación directa (como WhatsApp), implica la aceptación plena de los presentes Términos de Uso." data-en="Access to and use of this website, as well as requests for proposals or quotations through our forms or direct communication channels (such as WhatsApp), implies full acceptance of these Terms of Use.">
+          El acceso y uso de este sitio web, así como la solicitud de propuestas o cotizaciones a través de nuestros formularios o canales de comunicación directa (como WhatsApp), implica la aceptación plena de los presentes Términos de Uso.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="2. Servicios Profesionales" data-en="2. Professional Services">
+          2. Servicios Profesionales
+        </h3>
+        <p data-es="DevLopez Studio (Jose Lopez) ofrece servicios profesionales de ingeniería de software, incluyendo pero no limitándose a:" data-en="DevLopez Studio (Jose Lopez) provides professional software engineering services, including but not limited to:">
+          DevLopez Studio (Jose Lopez) ofrece servicios profesionales de ingeniería de software, incluyendo pero no limitándose a:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 pl-2 text-base-300">
+          <li>Desarrollo de software y plataformas web a medida (Astro, Next.js, React, Node.js).</li>
+          <li>Desarrollo de aplicaciones móviles para iOS y Android (React Native, Expo).</li>
+          <li>Landing pages de alta conversión optimizadas para Core Web Vitals y SEO.</li>
+          <li>SaaS, plataformas MVP escalables y soluciones e-commerce.</li>
+          <li>Arquitectura de sistemas, integraciones de API y consultoría técnica.</li>
+        </ul>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="3. Cotizaciones, Formularios y EmailJS" data-en="3. Quotations, Forms and EmailJS">
+          3. Cotizaciones, Formularios y EmailJS
+        </h3>
+        <p data-es="Las solicitudes enviadas mediante el formulario del sitio web se transmiten de forma cifrada mediante el servicio EmailJS directamente a nuestro correo electrónico. No se crea una cuenta de usuario ni se almacena tu información en bases de datos." data-en="Requests sent via the website form are transmitted encrypted through EmailJS directly to our email. No user account is created nor is your information stored in databases.">
+          Las solicitudes enviadas mediante el formulario del sitio web se transmiten de forma cifrada mediante el servicio EmailJS directamente a nuestro correo electrónico. No se crea una cuenta de usuario ni se almacena tu información en bases de datos.
+        </p>
+        <p data-es="Las estimaciones de presupuesto y plazos emitidas inicialmente son de carácter preliminar e informativo. No constituyen un contrato formal vinculante hasta la firma o aprobación de la propuesta comercial definitiva." data-en="Initial budget estimates and timelines are preliminary and informational. They do not constitute a formal binding contract until the definitive commercial proposal is signed or approved.">
+          Las estimaciones de presupuesto y plazos emitidas inicialmente son de carácter preliminar e informativo. No constituyen un contrato formal vinculante hasta la firma o aprobación de la propuesta comercial definitiva.
+        </p>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="4. Propiedad Intelectual del Código" data-en="4. Intellectual Property of Code">
+          4. Propiedad Intelectual del Código
+        </h3>
+        <p data-es="Salvo estipulación expresa en contrario en el acuerdo de trabajo:" data-en="Unless expressly stated otherwise in the work agreement:">
+          Salvo estipulación expresa en contrario en el acuerdo de trabajo:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 pl-2 text-base-300">
+          <li>Una vez completado el proyecto y cancelado el monto acordado por los hitos correspondientes, la titularidad y derechos patrimoniales sobre el código fuente a medida son cedidos al cliente.</li>
+          <li>Las librerías, dependencias o módulos de código abierto (open-source) utilizados mantienen sus respectivas licencias públicas (MIT, Apache, BSD, etc.).</li>
+          <li>DevLopez Studio se reserva el derecho de exhibir el resultado visual del proyecto en su portafolio profesional, salvo solicitud expresa de acuerdo de no divulgación (NDA).</li>
+        </ul>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="5. Confidencialidad" data-en="5. Confidentiality">
+          5. Confidencialidad
+        </h3>
+        <p data-es="Toda información técnica, comercial, prototipos o documentos compartidos por el cliente con el propósito de evaluar o ejecutar un proyecto se consideran estrictamente confidenciales y no serán divulgados a terceros." data-en="All technical and commercial information, prototypes, or documents shared by the client for the purpose of evaluating or executing a project are considered strictly confidential and will not be disclosed to third parties.">
+          Toda información técnica, comercial, prototipos o documentos compartidos por el cliente con el propósito de evaluar o ejecutar un proyecto se consideran estrictamente confidenciales y no serán divulgados a terceros.
+        </p>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="6. Limitación de Responsabilidad" data-en="6. Limitation of Liability">
+          6. Limitación de Responsabilidad
+        </h3>
+        <p data-es="Este sitio web y sus canales de cotización se proporcionan de buena fe. No nos hacemos responsables por fallos técnicos imprevistos derivados de proveedores de infraestructura externa, caídas de red, indisponibilidad temporal del servicio EmailJS o WhatsApp, ni por decisiones comerciales tomadas a partir de estimaciones preliminares." data-en="This website and its quote channels are provided in good faith. We are not liable for unforeseen technical failures caused by third-party infrastructure providers, network outages, temporary downtime of EmailJS or WhatsApp, or commercial decisions made based on preliminary estimates.">
+          Este sitio web y sus canales de cotización se proporcionan de buena fe. No nos hacemos responsables por fallos técnicos imprevistos derivados de proveedores de infraestructura externa, caídas de red, indisponibilidad temporal del servicio EmailJS o WhatsApp, ni por decisiones comerciales tomadas a partir de estimaciones preliminares.
+        </p>
+      </section>
+
+      <!-- Section 7 -->
+      <section class="flex flex-col gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+        <h3 class="text-lg font-bold text-white" data-es="7. Contacto y Consultas" data-en="7. Contact and Inquiries">
+          7. Contacto y Consultas
+        </h3>
+        <p data-es="Si tienes dudas o requieres información adicional sobre estos términos de servicio, puedes comunicarte directamente con Jose Lopez:" data-en="If you have any questions or require additional information regarding these terms of service, you can contact Jose Lopez directly:">
+          Si tienes dudas o requieres información adicional sobre estos términos de servicio, puedes comunicarte directamente con Jose Lopez:
+        </p>
+        <div class="mt-2 flex flex-col sm:flex-row gap-4 text-sm font-semibold">
+          <a href="mailto:dev.lopezjose@gmail.com" class="text-primary-400 hover:text-primary-300 transition-colors">
+            ✉️ dev.lopezjose@gmail.com
+          </a>
+          <a href="https://wa.me/+584120345008" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 transition-colors">
+            💬 WhatsApp: +58 412 0345008
+          </a>
+        </div>
+      </section>
+    </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

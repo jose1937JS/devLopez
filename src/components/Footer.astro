@@ -5,12 +5,12 @@ import Logo from './Logo.astro';
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-  { href: '#about', es: 'Nosotros', en: 'About' },
-  { href: '#services', es: 'Servicios', en: 'Services' },
-  { href: '#portfolio', es: 'Portafolio', en: 'Portfolio' },
-  { href: '#pricing', es: 'Precios', en: 'Pricing' },
-  { href: '#faq', es: 'FAQ', en: 'FAQ' },
-  { href: '#contact', es: 'Contacto', en: 'Contact' },
+  { href: '/#about', es: 'Nosotros', en: 'About' },
+  { href: '/#services', es: 'Servicios', en: 'Services' },
+  { href: '/#portfolio', es: 'Portafolio', en: 'Portfolio' },
+  { href: '/#pricing', es: 'Precios', en: 'Pricing' },
+  { href: '/#faq', es: 'FAQ', en: 'FAQ' },
+  { href: '/#contact', es: 'Contacto', en: 'Contact' },
 ];
 
 const services = [
@@ -51,7 +51,7 @@ const socials = [
 ];
 ---
 
-<footer class="sticky bottom-0 -z-10 border-t border-white/5 overflow-hidden">
+<footer class="sticky bottom-0 z-10 border-t border-black/5 dark:border-white/5 bg-[#f0f2f5] dark:bg-[#070709] overflow-hidden transition-colors duration-300">
   <!-- Top glow -->
   <div class="absolute top-0 left-1/2 w-[800px] h-px -translate-x-1/2 bg-gradient-to-r from-transparent via-primary-500/30 to-transparent" aria-hidden="true"></div>
 
@@ -65,14 +65,14 @@ const socials = [
           Transformamos ideas en productos digitales de alto impacto.
         </p>
         <!-- Socials -->
-        <div class="flex gap-2">
+        <div class="flex gap-2 relative z-10">
           {socials.map((s) => (
             <a
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.name}
-              class="w-9 h-9 rounded-lg glass hover:bg-primary-500/20 hover:border-primary-500/30 flex items-center justify-center text-base-400 hover:text-white transition-all duration-200 border border-white/5"
+              class="w-9 h-9 rounded-lg glass hover:bg-primary-500/20 hover:border-primary-500/30 flex items-center justify-center text-base-400 hover:text-white transition-all duration-200 border border-black/5 dark:border-white/5 cursor-pointer"
             >
               <Fragment set:html={s.icon} />
             </a>
@@ -106,7 +106,7 @@ const socials = [
           {services.map((s) => (
             <li>
               <a
-                href="#services"
+                href="/#services"
                 data-es={s.es}
                 data-en={s.en}
                 class="text-sm text-base-400 hover:text-white transition-colors duration-200"
@@ -127,10 +127,10 @@ const socials = [
           playsinline
           class="rounded-md mb-4 border border-white/20 shadow-lg shadow-primary-500/20"
         >
-          <source src="/src/assets/video-ai-5sec.mp4" type="video/mp4" />
+          <source src="/video-ai-5sec.mp4" type="video/mp4" />
         </video>
         <a
-          href="#contact"
+          href="/#contact"
           class="btn-magnetic inline-flex items-center gap-1.5 mt-2 px-4 py-2 rounded-xl bg-primary-500 hover:bg-primary-400 text-white text-xs font-semibold transition-all"
         >
           <span data-es="Cotizar Proyecto" data-en="Get a Quote">Cotizar Proyecto</span>

@@ -17,11 +17,11 @@ import Logo from './Logo.astro';
       <!-- Desktop Nav Links -->
       <div class="hidden md:flex items-center gap-1">
         {[
-          { href: '#about', es: 'Nosotros', en: 'About' },
-          { href: '#services', es: 'Servicios', en: 'Services' },
-          { href: '#portfolio', es: 'Portafolio', en: 'Portfolio' },
-          { href: '#pricing', es: 'Precios', en: 'Pricing' },
-          { href: '#faq', es: 'FAQ', en: 'FAQ' },
+          { href: '/#about', es: 'Nosotros', en: 'About' },
+          { href: '/#services', es: 'Servicios', en: 'Services' },
+          { href: '/#portfolio', es: 'Portafolio', en: 'Portfolio' },
+          { href: '/#pricing', es: 'Precios', en: 'Pricing' },
+          { href: '/#faq', es: 'FAQ', en: 'FAQ' },
         ].map((link) => (
           <a
             href={link.href}
@@ -66,7 +66,7 @@ import Logo from './Logo.astro';
 
         <!-- CTA Button -->
         <a
-          href="#contact"
+          href="/#contact"
           data-es="Cotizar Proyecto"
           data-en="Get a Quote"
           class="btn-magnetic hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold transition-all duration-200 glow-primary-sm hover:glow-primary"
@@ -101,11 +101,11 @@ import Logo from './Logo.astro';
   >
     <div class="flex flex-col gap-1">
       {[
-        { href: '#about', es: 'Nosotros', en: 'About' },
-        { href: '#services', es: 'Servicios', en: 'Services' },
-        { href: '#portfolio', es: 'Portafolio', en: 'Portfolio' },
-        { href: '#pricing', es: 'Precios', en: 'Pricing' },
-        { href: '#faq', es: 'FAQ', en: 'FAQ' },
+        { href: '/#about', es: 'Nosotros', en: 'About' },
+        { href: '/#services', es: 'Servicios', en: 'Services' },
+        { href: '/#portfolio', es: 'Portafolio', en: 'Portfolio' },
+        { href: '/#pricing', es: 'Precios', en: 'Pricing' },
+        { href: '/#faq', es: 'FAQ', en: 'FAQ' },
       ].map((link) => (
         <a
           href={link.href}
@@ -117,7 +117,7 @@ import Logo from './Logo.astro';
         </a>
       ))}
       <a
-        href="#contact"
+        href="/#contact"
         data-es="Cotizar Proyecto"
         data-en="Get a Quote"
         class="mt-2 px-4 py-2.5 rounded-xl bg-primary-500 text-white text-sm font-semibold text-center"
@@ -138,9 +138,9 @@ import Logo from './Logo.astro';
     if (isScrolled !== scrolled) {
       scrolled = isScrolled;
       if (scrolled) {
-        navbar.classList.add('bg-base-900/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
+        navbar.classList.add('bg-white/85', 'dark:bg-base-900/80', 'backdrop-blur-md', 'border-b', 'border-black/5', 'dark:border-white/5', 'shadow-sm');
       } else {
-        navbar.classList.remove('bg-base-900/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
+        navbar.classList.remove('bg-white/85', 'dark:bg-base-900/80', 'backdrop-blur-md', 'border-b', 'border-black/5', 'dark:border-white/5', 'shadow-sm');
       }
     }
   });
@@ -173,8 +173,8 @@ import Logo from './Logo.astro';
 
   function syncThemeIcons() {
     const isDark = document.documentElement.classList.contains('dark');
-    iconSun.classList.toggle('hidden', isDark);
-    iconMoon.classList.toggle('hidden', !isDark);
+    iconSun.classList.toggle('hidden', !isDark);
+    iconMoon.classList.toggle('hidden', isDark);
   }
 
   syncThemeIcons();

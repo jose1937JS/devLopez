@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Política de Privacidad — DevLopez Studio"
+  description="Conoce nuestra política de privacidad transparente: no almacenamos tus datos personales en ninguna base de datos y solo los usamos para enviarte cotizaciones y propuestas."
+>
+  <Navbar />
+
+  <main class="relative z-20 bg-[#f8f9fa] dark:bg-base-900 min-h-screen pt-32 pb-24 shadow-2xl transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Back button -->
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 text-sm font-semibold text-primary-500 hover:text-primary-400 transition-colors mb-8 group"
+    >
+      <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      <span data-es="Volver al inicio" data-en="Back to home">Volver al inicio</span>
+    </a>
+
+    <!-- Header -->
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-semibold mb-4">
+        <span data-es="Transparencia y Seguridad" data-en="Transparency & Security">Transparencia y Seguridad</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4" data-es="Política de Privacidad" data-en="Privacy Policy">
+        Política de Privacidad
+      </h1>
+      <p class="text-base-300 text-base sm:text-lg" data-es="Última actualización: Septiembre 2026. Te explicamos de forma transparente cómo gestionamos la información que compartes con nosotros." data-en="Last updated: September 2026. We explain transparently how we handle the information you share with us.">
+        Última actualización: Septiembre 2026. Te explicamos de forma transparente cómo gestionamos la información que compartes con nosotros.
+      </p>
+    </div>
+
+    <!-- Content Card -->
+    <div class="glass rounded-3xl p-6 sm:p-10 border border-black/5 dark:border-white/10 flex flex-col gap-8 text-base-300 leading-relaxed text-sm sm:text-base">
+      <!-- Callout Highlight -->
+      <div class="p-5 rounded-2xl bg-primary-500/10 border border-primary-500/30 text-white">
+        <h2 class="text-base font-bold text-primary-400 mb-1 flex items-center gap-2" data-es="🔒 Compromiso principal: Cero bases de datos de usuarios" data-en="🔒 Core commitment: Zero user databases">
+          🔒 Compromiso principal: Cero bases de datos de usuarios
+        </h2>
+        <p class="text-sm text-base-200" data-es="Los datos que ingresas en el formulario de contacto no se almacenan en ninguna base de datos ni servidor de almacenamiento permanente. Se transmiten de forma cifrada y directa a nuestro correo electrónico privado mediante la librería EmailJS exclusivamente para enviarte la cotización correspondiente." data-en="The data you enter in the contact form is not stored in any database or permanent storage server. It is transmitted encrypted and directly to our private email via the EmailJS library solely to send you the corresponding quotation.">
+          Los datos que ingresas en el formulario de contacto no se almacenan en ninguna base de datos ni servidor de almacenamiento permanente. Se transmiten de forma cifrada y directa a nuestro correo electrónico privado mediante la librería EmailJS exclusivamente para enviarte la cotización correspondiente.
+        </p>
+      </div>
+
+      <!-- Section 1 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="1. Información que recopilamos" data-en="1. Information We Collect">
+          1. Información que recopilamos
+        </h3>
+        <p data-es="A través del formulario de cotización de este sitio web, únicamente solicitamos la información mínima indispensable para poder evaluar tu solicitud y redactar una propuesta técnica y económica personalizada:" data-en="Through the quote form on this website, we only request the minimum information necessary to evaluate your request and draft a customized technical and financial proposal:">
+          A través del formulario de cotización de este sitio web, únicamente solicitamos la información mínima indispensable para poder evaluar tu solicitud y redactar una propuesta técnica y económica personalizada:
+        </p>
+        <ul class="list-disc list-inside space-y-2 pl-2 text-base-300">
+          <li><strong class="text-white">Nombre:</strong> Para dirigirnos a ti de forma personalizada.</li>
+          <li><strong class="text-white">Correo electrónico:</strong> Dirección a la cual te enviaremos el desglose de la cotización y los detalles técnicos del proyecto.</li>
+          <li><strong class="text-white">Número de teléfono / WhatsApp (Opcional):</strong> Solo se recopila si marcas explícitamente la casilla <em>"Me gustaría que me enviaran la propuesta también al whatsapp"</em>. De no marcarla, este campo no se solicita ni se recopila.</li>
+          <li><strong class="text-white">Detalles del proyecto:</strong> Tipo de plataforma (landing page, sitio web, web app, app móvil, e-commerce), presupuesto estimado, plazo de entrega y descripción del requerimiento.</li>
+        </ul>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="2. Finalidad exclusiva del uso de los datos" data-en="2. Exclusive Purpose of Data Usage">
+          2. Finalidad exclusiva del uso de los datos
+        </h3>
+        <p data-es="La información proporcionada se utiliza con el único y exclusivo propósito de:" data-en="The provided information is used solely and exclusively for:">
+          La información proporcionada se utiliza con el único y exclusivo propósito de:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 pl-2 text-base-300">
+          <li>Analizar los requerimientos técnicos y alcance de tu aplicación o sitio web.</li>
+          <li>Calcular los tiempos de entrega, esquema de arquitectura e hitos de pago.</li>
+          <li>Enviarte la propuesta de presupuesto cerrada sin costo ni compromiso.</li>
+          <li>Establecer comunicación directa 1 a 1 contigo para coordinar el inicio o aclaración de tu proyecto.</li>
+        </ul>
+        <p class="mt-2 text-xs sm:text-sm text-base-400" data-es="No realizamos envíos de publicidad no solicitada (spam), no tenemos listas de distribución promocional y nunca comercializamos tus datos." data-en="We do not send unsolicited advertising (spam), we do not run promotional distribution lists, and we never commercialize your data.">
+          No realizamos envíos de publicidad no solicitada (spam), no tenemos listas de distribución promocional y nunca comercializamos tus datos.
+        </p>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="3. Mecanismo de envío técnico (EmailJS)" data-en="3. Technical Transmission Mechanism (EmailJS)">
+          3. Mecanismo de envío técnico (EmailJS)
+        </h3>
+        <p data-es="Para conectar el formulario de contacto con nuestra casilla de correo electrónico sin exponer credenciales de servidor ni requerir una base de datos intermedia, utilizamos el servicio EmailJS (https://www.emailjs.com)." data-en="To connect the contact form with our mailbox without exposing server credentials or requiring an intermediate database, we use the EmailJS service (https://www.emailjs.com).">
+          Para conectar el formulario de contacto con nuestra casilla de correo electrónico sin exponer credenciales de servidor ni requerir una base de datos intermedia, utilizamos el servicio EmailJS (https://www.emailjs.com).
+        </p>
+        <p data-es="La transmisión se realiza cifrada bajo estándares HTTPS/TLS directamente desde el navegador hacia la API de EmailJS, la cual remite el correo a nuestro buzón. Ni EmailJS ni nosotros creamos un perfil analítico o repositorio de datos con tu información." data-en="Transmission is encrypted under HTTPS/TLS standards directly from the browser to the EmailJS API, which forwards the email to our inbox. Neither EmailJS nor we create an analytical profile or data repository with your information.">
+          La transmisión se realiza cifrada bajo estándares HTTPS/TLS directamente desde el navegador hacia la API de EmailJS, la cual remite el correo a nuestro buzón. Ni EmailJS ni nosotros creamos un perfil analítico o repositorio de datos con tu información.
+        </p>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="4. No cesión a terceros" data-en="4. No Third-Party Sharing">
+          4. No cesión a terceros
+        </h3>
+        <p data-es="Bajo ninguna circunstancia vendemos, alquilamos, compartimos, transferimos ni revelamos tus datos personales o detalles de tu idea de negocio a terceros, empresas de telemercadeo o plataformas publicitarias." data-en="Under no circumstances do we sell, rent, share, transfer, or disclose your personal data or details of your business idea to third parties, telemarketing companies, or advertising platforms.">
+          Bajo ninguna circunstancia vendemos, alquilamos, compartimos, transferimos ni revelamos tus datos personales o detalles de tu idea de negocio a terceros, empresas de telemercadeo o plataformas publicitarias.
+        </p>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="5. Tus derechos y eliminación de información" data-en="5. Your Rights and Data Deletion">
+          5. Tus derechos y eliminación de información
+        </h3>
+        <p data-es="Tienes en todo momento el derecho de consultar, rectificar o solicitar el borrado permanente de cualquier correo electrónico recibido con tus datos. Solo debes enviar un correo electrónico con el asunto 'Eliminar mis datos' a dev.lopezjose@gmail.com y tus mensajes serán eliminados de inmediato de nuestro buzón." data-en="You have the right at all times to access, rectify, or request the permanent deletion of any email received containing your data. Simply send an email with the subject 'Delete my data' to dev.lopezjose@gmail.com and your messages will be promptly removed from our mailbox.">
+          Tienes en todo momento el derecho de consultar, rectificar o solicitar el borrado permanente de cualquier correo electrónico recibido con tus datos. Solo debes enviar un correo electrónico con el asunto <em>"Eliminar mis datos"</em> a <strong class="text-primary-400">dev.lopezjose@gmail.com</strong> y tus mensajes serán eliminados de inmediato de nuestro buzón.
+        </p>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="flex flex-col gap-3">
+        <h3 class="text-lg sm:text-xl font-bold text-white" data-es="6. Almacenamiento local del navegador (Cookies / LocalStorage)" data-en="6. Browser Local Storage (Cookies / LocalStorage)">
+          6. Almacenamiento local del navegador (Cookies / LocalStorage)
+        </h3>
+        <p data-es="Este sitio web no utiliza cookies de seguimiento invasivo de terceros ni scripts de seguimiento publicitario. Únicamente se utilizan elementos de almacenamiento local del navegador (localStorage) para recordar:" data-en="This website does not use invasive third-party tracking cookies or advertising tracking scripts. It only uses browser local storage items (localStorage) to remember:">
+          Este sitio web no utiliza cookies de seguimiento invasivo de terceros ni scripts de seguimiento publicitario. Únicamente se utilizan elementos de almacenamiento local del navegador (localStorage) para recordar:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 pl-2 text-base-300">
+          <li>Tu preferencia de tema (Modo Oscuro / Modo Claro).</li>
+          <li>Tu preferencia de idioma (Español / Inglés).</li>
+        </ul>
+      </section>
+
+      <!-- Section 7 -->
+      <section class="flex flex-col gap-2 pt-4 border-t border-black/5 dark:border-white/5">
+        <h3 class="text-lg font-bold text-white" data-es="7. Contacto directo" data-en="7. Direct Contact">
+          7. Contacto directo
+        </h3>
+        <p data-es="Si tienes preguntas sobre nuestra política de privacidad o deseas hablar directamente:" data-en="If you have questions about our privacy policy or wish to speak directly:">
+          Si tienes preguntas sobre nuestra política de privacidad o deseas hablar directamente:
+        </p>
+        <div class="mt-2 flex flex-col sm:flex-row gap-4 text-sm font-semibold">
+          <a href="mailto:dev.lopezjose@gmail.com" class="text-primary-400 hover:text-primary-300 transition-colors">
+            ✉️ dev.lopezjose@gmail.com
+          </a>
+          <a href="https://wa.me/+584120345008" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 transition-colors">
+            💬 WhatsApp: +58 412 0345008
+          </a>
+        </div>
+      </section>
+    </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
