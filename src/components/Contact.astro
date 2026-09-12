@@ -314,9 +314,9 @@
 <script>
   import emailjs from '@emailjs/browser';
 
-  const EMAILJS_SERVICE_ID  = 'service_nkj3uwb';
-  const EMAILJS_TEMPLATE_ID = 'template_f7kpqnk';
-  const EMAILJS_PUBLIC_KEY  = 'r8EzIy-QpZr2b6mXe';
+  const EMAILJS_SERVICE_ID  = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY  = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 
   // Contact parallax
   const contactSection = document.getElementById('contact');
