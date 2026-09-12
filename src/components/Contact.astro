@@ -87,10 +87,10 @@
                 </h4>
                 <p
                   class="text-xs text-base-300 leading-relaxed"
-                  data-es="Recibes una estimación con tiempos de entrega garantizados, desglose de funcionalidades y un plan de pagos por hitos."
-                  data-en="You receive an estimate with guaranteed delivery times, feature breakdown, and a milestone payment plan."
+                  data-es="Recibes una estimación con tiempos de entrega, desglose de funcionalidades y un plan de pagos por hitos."
+                  data-en="You receive an estimate with estimated delivery times, feature breakdown, and a payment plan by milestones."
                 >
-                  Recibes una estimación con tiempos de entrega garantizados, desglose de funcionalidades y un plan de pagos por hitos.
+                  Recibes una estimación con tiempos de entrega, desglose de funcionalidades y un plan de pagos por hitos.
                 </p>
               </div>
             </li>
@@ -168,6 +168,7 @@
               <option value="landing" class="bg-base-800" data-es="Landing Page" data-en="Landing Page">Landing Page</option>
               <option value="website" class="bg-base-800" data-es="Sitio Web" data-en="Website">Sitio Web</option>
               <option value="webapp" class="bg-base-800" data-es="Web App / SaaS / MVP" data-en="Web App / SaaS / MVP">Web App / SaaS / MVP</option>
+              <option value="ecommerce" class="bg-base-800" data-es="E-commerce / Tienda Online" data-en="E-commerce / Online Store">E-commerce / Tienda Online</option>
               <option value="mobile" class="bg-base-800" data-es="App Móvil iOS / Android" data-en="Mobile App iOS / Android">App Móvil iOS / Android</option>
               <option value="other" class="bg-base-800" data-es="Otro" data-en="Other">Otro</option>
             </select>
@@ -194,6 +195,25 @@
             </div>
           </div>
 
+          <!-- Deadline -->
+          <div class="flex flex-col gap-1.5">
+            <label for="deadline" class="text-xs font-semibold uppercase tracking-wide text-base-400" data-es="Tiempo de entrega deseado" data-en="Desired Delivery Time">Tiempo de entrega deseado</label>
+            <select
+              id="deadline"
+              name="deadline"
+              required
+              class="form-input w-full px-4 py-3 rounded-xl glass border border-white/10 focus:border-primary-500/50 focus:outline-none text-white text-sm transition-all duration-200 bg-white/3"
+            >
+              <option value="" selected disabled class="bg-base-800">Selecciona una opción</option>
+              <option value="ASAP" class="bg-base-800" data-es="Lo antes posible (ASAP)" data-en="As soon as possible (ASAP)">Lo antes posible (ASAP)</option>
+              <option value="1-2-semanas" class="bg-base-800" data-es="1-2 semanas" data-en="1-2 weeks">1-2 semanas</option>
+              <option value="2-4-semanas" class="bg-base-800" data-es="2-4 semanas" data-en="2-4 weeks">2-4 semanas</option>
+              <option value="1-2-meses" class="bg-base-800" data-es="1-2 meses" data-en="1-2 months">1-2 meses</option>
+              <option value="mas-2-meses" class="bg-base-800" data-es="Más de 2 meses" data-en="More than 2 months">Más de 2 meses</option>
+            </select>
+            <span class="form-error text-xs text-red-400 hidden" data-field="deadline"></span>
+          </div>
+
           <!-- Message -->
           <div class="flex flex-col gap-1.5">
             <label for="message" class="text-xs font-semibold uppercase tracking-wide text-base-400" data-es="Cuéntanos tu proyecto *" data-en="Tell us about your project *">Cuéntanos tu proyecto *</label>
@@ -206,6 +226,45 @@
               class="form-input w-full px-4 py-3 rounded-xl glass border border-white/10 focus:border-primary-500/50 focus:outline-none text-white placeholder-base-500 text-sm transition-all duration-200 bg-white/3 resize-none"
             ></textarea>
             <span class="form-error text-xs text-red-400 hidden" data-field="message"></span>
+          </div>
+
+          <!-- WhatsApp proposal checkbox & conditional phone input -->
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-3">
+              <input
+                type="checkbox"
+                id="whatsapp-toggle"
+                name="whatsapp_opt_in"
+                class="w-4 h-4 rounded border-white/20 bg-white/5 text-primary-500 focus:ring-primary-500/30 focus:ring-offset-0 cursor-pointer accent-[#ff6b26]"
+              />
+              <label
+                for="whatsapp-toggle"
+                class="text-xs sm:text-sm text-base-300 hover:text-white transition-colors cursor-pointer select-none"
+                data-es="Me gustaría que me enviaran la propuesta también al whatsapp"
+                data-en="I would like to receive the proposal also on WhatsApp"
+              >
+                Me gustaría que me enviaran la propuesta también al whatsapp
+              </label>
+            </div>
+
+            <div id="whatsapp-container" class="hidden flex-col gap-1.5 transition-all duration-300">
+              <label
+                for="whatsapp-phone"
+                class="text-xs font-semibold uppercase tracking-wide text-base-400"
+                data-es="Número de teléfono (con código de país) *"
+                data-en="Phone number (with country code) *"
+              >
+                Número de teléfono (con código de país) *
+              </label>
+              <input
+                id="whatsapp-phone"
+                name="whatsapp_phone"
+                type="tel"
+                placeholder="ej: +584121234567"
+                class="form-input w-full px-4 py-3 rounded-xl glass border border-white/10 focus:border-primary-500/50 focus:outline-none text-white placeholder-base-500 text-sm transition-all duration-200 bg-white/3"
+              />
+              <span class="form-error text-xs text-red-400 hidden" data-field="whatsapp_phone"></span>
+            </div>
           </div>
 
           <!-- Submit -->
@@ -256,7 +315,7 @@
   import emailjs from '@emailjs/browser';
 
   const EMAILJS_SERVICE_ID  = 'service_nkj3uwb';
-  const EMAILJS_TEMPLATE_ID = 'template_e0sn67c';
+  const EMAILJS_TEMPLATE_ID = 'template_f7kpqnk';
   const EMAILJS_PUBLIC_KEY  = 'r8EzIy-QpZr2b6mXe';
 
   // Contact parallax
@@ -293,6 +352,26 @@
   const submitText = document.getElementById('submit-text');
   const successMsg = document.getElementById('form-success');
   const errorAlert = document.getElementById('form-error-alert');
+  const whatsappToggle = document.getElementById('whatsapp-toggle') as HTMLInputElement | null;
+  const whatsappContainer = document.getElementById('whatsapp-container');
+  const whatsappPhoneInput = document.getElementById('whatsapp-phone') as HTMLInputElement | null;
+
+  whatsappToggle?.addEventListener('change', () => {
+    if (whatsappToggle.checked) {
+      whatsappContainer?.classList.remove('hidden');
+      whatsappContainer?.classList.add('flex');
+      whatsappPhoneInput?.focus();
+    } else {
+      whatsappContainer?.classList.add('hidden');
+      whatsappContainer?.classList.remove('flex');
+      const err = form?.querySelector<HTMLElement>('[data-field="whatsapp_phone"]');
+      if (err) {
+        err.textContent = '';
+        err.classList.add('hidden');
+      }
+      whatsappPhoneInput?.classList.remove('border-red-500/50');
+    }
+  });
 
   function showError(field: string, msg: string) {
     const el = form?.querySelector<HTMLElement>(`[data-field="${field}"]`);
@@ -319,6 +398,20 @@
     if (!data.email?.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { showError('email', 'Ingresa un email válido.'); valid = false; }
     if (!data.project_type) { showError('project_type', 'Selecciona un tipo de proyecto.'); valid = false; }
     if (!data.message?.trim() || data.message.length < 10) { showError('message', 'El mensaje debe tener al menos 10 caracteres.'); valid = false; }
+    if (!data.budget) { showError('budget', 'Selecciona un presupuesto.'); valid = false; }
+
+    const isWhatsappChecked = Boolean(whatsappToggle?.checked);
+    if (isWhatsappChecked) {
+      const phone = (data.whatsapp_phone || '').trim();
+      const phoneClean = phone.replace(/[\s\-\(\)]/g, '');
+      if (!phone) {
+        showError('whatsapp_phone', 'El número de teléfono es obligatorio.');
+        valid = false;
+      } else if (!/^\+[1-9]\d{7,14}$/.test(phoneClean)) {
+        showError('whatsapp_phone', 'Ingresa un número válido con código de país (ej: +584121111111).');
+        valid = false;
+      }
+    }
 
     if (!valid) return;
 
@@ -341,24 +434,25 @@
       landing: 'Landing Page',
       website: 'Sitio Web',
       webapp: 'Web App / SaaS / MVP',
+      ecommerce: 'E-commerce / Tienda Online',
       mobile: 'App Móvil iOS / Android',
       other: 'Otro',
     };
 
     const projectTypeReadable = projectLabels[data.project_type] || data.project_type || 'N/A';
+    const whatsappPhone = isWhatsappChecked ? (data.whatsapp_phone?.trim() || '') : '';
 
-    const payload: Record<string, string> = {
-      formMode: 'COTIZACIÓN / CONTACTO',
+    const payload: Record<string, string|boolean> = {
       name: data.name.trim(),
       time: timeStr,
       email: data.email.trim(),
-      phone: 'N/A',
-      subject: `Nuevo contacto: ${projectTypeReadable}`,
+      subject: projectTypeReadable,
       message: data.message.trim(),
       budget: data.budget || 'No especificado',
-      deadline: 'A coordinar',
-      references: 'N/A',
+      deadline: data.deadline || 'A coordinar',
       appType: projectTypeReadable,
+      whatsapp: isWhatsappChecked,
+      phone: whatsappPhone || 'No solicitado',
     };
 
     try {
@@ -367,6 +461,8 @@
       });
 
       form.reset();
+      whatsappContainer?.classList.add('hidden');
+      whatsappContainer?.classList.remove('flex');
       document.querySelectorAll('.budget-label').forEach((l) => l.classList.remove('active-budget'));
       successMsg?.classList.remove('hidden');
       setTimeout(() => successMsg?.classList.add('hidden'), 8000);

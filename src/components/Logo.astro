@@ -1,0 +1,30 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+// import { Image } from 'astro:assets';
+---
+
+<a
+  href="#hero"
+  class={`flex items-center group font-fira ${className}`}
+  aria-label="DevLopezJose"
+>
+  <div class="">
+    <!-- <Image
+      src="/logo-orange.jpeg"
+      alt="DevLopezJose"
+      class="w-full h-full object-contain"
+      loading="eager"
+      decoding="async"
+      width={64}
+      height={64}
+      fetchpriority="high"
+    /> -->
+  </div>
+  <span class="font-bold text-xl tracking-tight text-white">
+    <span class="text-white">{`{ `}</span>Dev<span class="text-primary-500">LopezJose</span><span class="text-white">{` }`}</span>
+  </span>
+</a>

@@ -45,6 +45,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
+        fira: ['"Fira Code"', 'monospace'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

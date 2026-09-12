@@ -1,5 +1,6 @@
 ---
 // Navbar.astro — Fixed frosted-glass navigation with i18n + theme toggle
+import Logo from './Logo.astro';
 ---
 
 <header
@@ -11,20 +12,7 @@
   >
     <nav class="flex items-center justify-between h-18">
       <!-- Logo -->
-      <a
-        href="#hero"
-        class="flex items-center gap-2.5 group"
-        aria-label="DevLopez Home"
-      >
-        <div
-          class="w-9 h-9 rounded-xl bg-primary-500 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:animate-pulse-glow transition-all duration-300"
-        >
-          D
-        </div>
-        <span class="font-bold text-xl tracking-tight text-white dark:text-white text-base-800">
-          Dev<span class="text-primary-500">Lopez</span>
-        </span>
-      </a>
+      <Logo />
 
       <!-- Desktop Nav Links -->
       <div class="hidden md:flex items-center gap-1">

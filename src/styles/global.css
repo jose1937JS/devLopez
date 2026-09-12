@@ -37,6 +37,7 @@
   /* Fonts */
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-fira: 'Fira Code', monospace;
 
   /* Animations */
   --animate-fade-up: fadeUp 0.7s ease forwards;

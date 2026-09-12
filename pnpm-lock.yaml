@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@emailjs/browser':
+        specifier: ^4.4.1
+        version: 4.4.1
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@8.2.2(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.0))
@@ -179,6 +182,10 @@ packages:
   '@clack/prompts@1.7.0':
     resolution: {integrity: sha512-y7/yvZ2TPAnR9+jnc00klvNNLkJiXFFrQA/hlLCcxA9a2A4zQIOimyFQ9XfwYKiGD1fb5GY8vbKIIgO8d5Tb2A==}
     engines: {node: '>= 20.12.0'}
+
+  '@emailjs/browser@4.4.1':
+    resolution: {integrity: sha512-DGSlP9sPvyFba3to2A50kDtZ+pXVp/0rhmqs2LmbMS3I5J8FSOgLwzY2Xb4qfKlOVHh29EAutLYwe5yuEZmEFg==}
+    engines: {node: '>=14.0.0'}
 
   '@emnapi/core@1.11.1':
     resolution: {integrity: sha512-RSvbQmHzdKzNsLYa/wHrbc3KN4sYLKAdPZxqiM2HATqv/SBk2/ENSHpvXGaLOMcsAyz0poEGqkmmKYG3OWiJEQ==}
@@ -1737,6 +1744,8 @@ snapshots:
       fast-string-width: 3.0.2
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
+
+  '@emailjs/browser@4.4.1': {}
 
   '@emnapi/core@1.11.1':
     dependencies:
